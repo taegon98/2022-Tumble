@@ -8,6 +8,8 @@ public class TumbleProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TumbleProjectApplication.class, args);
+		System.out.println("TumbleProjectApplication.main");
 	}
+
 
 }
