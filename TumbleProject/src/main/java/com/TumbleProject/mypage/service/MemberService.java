@@ -15,4 +15,8 @@ public class MemberService {
         memberRepository.save(member);
         return member.getId();
     }
+
+    public Boolean authenticated(String userId, String password) {
+        memberRepository.findby
+    }
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -32,6 +34,20 @@ public class MemberController {
         }
 
         memberService.save(member);
+        return "/home";
+    }
+
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        model.addAttribute("member", new Member());
+        return "signup/login";
+    }
+    @PostMapping("/login")
+    public String login(@Validated @ModelAttribute Member member, BindingResult bindingResult, HttpServletRequest request) {
+
+        if (bindingResult.hasErrors()) {
+            return "signup/login";
+        }
         return "/home";
     }
 }

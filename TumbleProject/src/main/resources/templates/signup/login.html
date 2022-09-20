@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link th:href="@{/css/bootstrap.min.css}"
-          href="../css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
     <style>
          .container {
          max-width: 560px;
@@ -12,14 +11,13 @@
          border-color: #dc3545;
          color: #dc3545;
          }
-     </style>
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="py-5 text-center">
-        <h2>회원 가입</h2>
+        <h2>로그인</h2>
     </div>
-    <h4 class="mb-3">회원 정보 입력</h4>
     <form action="" th:action th:object="${member}" method="post">
         <div>
             <label for="userId">로그인 ID</label>
@@ -29,25 +27,13 @@
             <label for="password">비밀번호</label>
             <input type="password" id="password" th:field="*{password}" class="form-control" th:errorclass="field-error">
         </div>
-        <div>
-            <label for="name">이름</label>
-            <input type="text" id="name" th:field="*{name}" class="form-control" th:errorclass="field-error">
-        </div>
-        <div>
-            <label for="number">전화번호</label>
-            <input type="text" id="number" th:field="*{number}" class="form-control" th:errorclass="field-error">
-        </div>
-        <div>
-            <label for="email">E-mail</label>
-            <input type="text" id="email" th:field="*{email}" class="form-control" th:errorclass="field-error">
-        </div>
-        <hr>
+        <hr class="my-4">
         <div class="row">
             <div class="col">
-                <button class="w-100 btn btn-primary btn-lg" type="submit">회원 가입</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">로그인</button>
             </div>
             <div class="col">
-                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='#'"
+                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href=''"
                         th:onclick="|location.href='@{/home}'|" type="button">취소</button>
             </div>
         </div>
