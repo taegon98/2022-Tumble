@@ -17,6 +17,6 @@ public class MemberService {
     }
 
     public Boolean authenticated(String userId, String password) {
-        memberRepository.findby
+        return null;
     }
 }
