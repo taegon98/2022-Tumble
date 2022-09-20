@@ -16,5 +16,14 @@ public class CommunityController {
         return "communityHtml/communityEnroll";
     }
 
+    @PostMapping("/community/write")
+    public String boardWrite(String title,String content)
+    {
+        System.out.println("title = " + title);
+        System.out.println("content = " + content);
+
+        return "";
+    }
+
 
 }
