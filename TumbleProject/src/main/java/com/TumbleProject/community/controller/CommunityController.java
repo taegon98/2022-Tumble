@@ -16,9 +16,5 @@ public class CommunityController {
         return "communityHtml/communityEnroll";
     }
 
-    @PostMapping("/community/enroll")
-    public String back() {
-        return "redirect:/home/community";
-    }
 
 }
