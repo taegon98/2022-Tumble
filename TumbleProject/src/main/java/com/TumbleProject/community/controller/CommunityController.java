@@ -29,7 +29,6 @@ public class CommunityController {
     @PostMapping("/community/write")
     public String boardWrite(Board board)
     {
-
         communityService.write(board);
         return "communityHtml/communityWriteFinish";
     }
