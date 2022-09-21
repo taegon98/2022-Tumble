@@ -16,5 +16,7 @@ public class Cafe {
     private String name;
     private String address;
     private String phoneNum;
-    private Integer discount;
+    private String discount;
+    private String hour;
+    private String introduce;
 }
