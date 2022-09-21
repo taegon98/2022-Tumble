@@ -31,7 +31,7 @@ public class CommunityController {
     public String boardWrite(Board board)
     {
         communityService.write(board);
-        return "communityHtml/communityWriteFinish";
+        return "redirect:/community";
     }
     @GetMapping("/community/view")
     public String boardView(Model model,Integer id) {
@@ -57,12 +57,13 @@ public class CommunityController {
     public String boardUpdate(@PathVariable("id") Integer id,Board board)
     {
         Board boardTemp=communityService.boardView(id);
+        int num=board.getId();
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
 
         communityService.write(boardTemp);
 
-        return "redirect:/community";
+        return "redirect:/community/view?id={id}";
     }
 
 
