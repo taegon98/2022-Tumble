@@ -47,19 +47,20 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@Validated @ModelAttribute Member member, BindingResult bindingResult, HttpServletRequest request) {
 
-        if (bindingResult.hasErrors()) {
+       // if (bindingResult.hasErrors()) {
+        //    return "signup/login";
+       // }
+
+        Member loginMember = memberService.authenticated(member.getUserId(), member.getPassword());
+
+        if (loginMember == null) {
+            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다");
             return "signup/login";
         }
 
-        Member loginMember = memberService.login(member.getUserId(), member.getPassword());
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
-       // if (loginMember == null) {
-       //     return "signup/login";
-      //  }
-
-        //HttpSession session = request.getSession();
-       // session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
-
-        return "/";
+        return "redirect:/";
     }
 }

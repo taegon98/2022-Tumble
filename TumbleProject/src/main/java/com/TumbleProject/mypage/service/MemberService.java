@@ -20,12 +20,16 @@ public class MemberService {
     }
 
     public Optional<Member> findByLoginId(String userId) {
-        return memberRepository.findAll().stream()
-                .filter(m -> m.getUserId().equals(userId))
-                .findFirst();
+       List<Member> all = memberRepository.findAll();
+        for (Member m : all) {
+            if (m.getUserId().equals(userId)) {
+                return Optional.of(m);
+            }
+        }
+        return Optional.empty();
     }
 
-    public Member login(String userId, String password) {
+    public Member authenticated(String userId, String password) {
         Optional<Member> findMemberOptional = findByLoginId(userId);
         Member member = findMemberOptional.get();
         if (member.getPassword().equals(password)) {
