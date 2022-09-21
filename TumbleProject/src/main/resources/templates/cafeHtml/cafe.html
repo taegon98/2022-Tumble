@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cafe</title>
+    <title>Tumble</title>
 </head>
+
+<!--<style>-->
+<!--    .layout {-->
+<!--        width: 500px;-->
+<!--        margin: 40px auto 0;-->
+<!--    }-->
+<!--</style>-->
 <body>
-<h1>게시물 목록</h1>
-<a href="/cafe/enroll">게시글 작성</a>
+<h1>카페소개</h1>
+
+<div class="layout">
+    <table>
+        <thead>
+        <tr>
+            <th>글번호</th>
+            <th>카페이름</th>
+            <th>주소</th>
+            <th>번호</th>
+            <th>할인혜택</th>
+            <th>영업시간</th>
+            <th>소개글</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cafe : ${cafes}">
+            <td th:text="${cafe.id}"></td>
+            <td th:text="${cafe.name}"></td>
+            <td th:text="${cafe.address}"></td>
+            <td th:text="${cafe.phoneNum}"></td>
+            <td th:text="${cafe.discount}"></td>
+            <td th:text="${cafe.hour}"></td>
+            <td th:text="${cafe.introduce}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+    <a href="/cafe/enroll">게시글 작성</a>
 </body>
 </html>
+
