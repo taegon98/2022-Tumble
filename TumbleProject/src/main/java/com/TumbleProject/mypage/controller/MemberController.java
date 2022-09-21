@@ -51,15 +51,15 @@ public class MemberController {
             return "signup/login";
         }
 
-        Member loginMember = memberService.authenticated(member.getUserId(), member.getPassword());
+       // Member loginMember = memberService.login(member.getUserId(), member.getPassword());
 
        // if (loginMember == null) {
-        //    return "signup/login";
-       // }
+       //     return "signup/login";
+      //  }
 
         //HttpSession session = request.getSession();
-        //session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+       // session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
-        return "redirect:/";
+        return "/";
     }
 }

@@ -19,19 +19,20 @@ public class MemberService {
         return member.getId();
     }
 
-    public Member authenticated(String userId, String password) {
-        List<Member> members = memberRepository.findAll();
-        Member temp = null;
-        for (Member m : members) {
-            if (m.getUserId().equals(userId)) {
-                temp = m;
-            }
-        }
-        if (temp == null) { return null; }
+    public Optional<Member> findByLoginId(String userId) {
+        return memberRepository.findAll().stream()
+                .filter(m -> m.getUserId().equals(userId))
+                .findFirst();
+    }
 
-        if (temp.getPassword().equals(password)) {
-            return temp;
+    public Member login(String userId, String password) {
+        Optional<Member> findMemberOptional = findByLoginId(userId);
+        Member member = findMemberOptional.get();
+        if (member.getPassword().equals(password)) {
+            return member;
+        } else {
+            return null;
         }
-        return null;
+
     }
 }
