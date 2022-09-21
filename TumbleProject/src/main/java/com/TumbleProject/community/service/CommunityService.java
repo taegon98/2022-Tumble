@@ -12,7 +12,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CommunityService {
-    
+
+
     private final CommunityRepository communityRepository;
 
     public void write(Board board) {
@@ -30,4 +31,6 @@ public class CommunityService {
     public void boardDelete(Integer id) {
         communityRepository.deleteById(id);
     }
+
+
 }

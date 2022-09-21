@@ -2,10 +2,7 @@ package com.TumbleProject.community.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,8 +13,15 @@ public class Board {
 
     private String title;
     private String content;
-    private Integer view;
+    private Integer viewCount;
 
+    public Integer getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(Integer viewCount) {
+        this.viewCount = viewCount;
+    }
 
     public Integer getId() {
         return id;
@@ -42,4 +46,5 @@ public class Board {
     public void setContent(String content) {
         this.content = content;
     }
+
 }
