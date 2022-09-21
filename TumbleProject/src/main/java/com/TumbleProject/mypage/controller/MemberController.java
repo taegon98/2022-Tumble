@@ -47,10 +47,6 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@Validated @ModelAttribute Member member, BindingResult bindingResult, HttpServletRequest request) {
 
-       // if (bindingResult.hasErrors()) {
-        //    return "signup/login";
-       // }
-
         Member loginMember = memberService.authenticated(member.getUserId(), member.getPassword());
 
         if (loginMember == null) {
