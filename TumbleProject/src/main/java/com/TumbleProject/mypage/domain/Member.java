@@ -34,4 +34,5 @@ public class Member {
     @Email
     @NotBlank
     private String email;
+
 }
