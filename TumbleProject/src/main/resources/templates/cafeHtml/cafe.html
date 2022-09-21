@@ -31,7 +31,8 @@
             <td th:text="${cafe.discount}"></td>
             <td th:text="${cafe.hour}"></td>
             <td th:text="${cafe.introduce}"></td>
-            <button type="button"><a href="/cafe/modify">수정</a></button>
+            <button type = "button"><a th:href="@{/cafe/modify/{id}(id=${cafe.id})}">글수정</a></button>
+
         </tr>
         </tbody>
     </table>

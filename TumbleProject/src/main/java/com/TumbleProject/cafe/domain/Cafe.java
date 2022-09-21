@@ -12,23 +12,11 @@ import java.time.LocalDateTime;
 public class Cafe {
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String name;
     private String address;
     private String phoneNum;
     private String discount;
     private String hour;
     private String introduce;
-
-    //private LocalDateTime createDate = LocalDateTime.now();
-    //private LocalDateTime modifiedDate;
-//    public void update(String name, String address, String phoneNum, String discount, String hour, String introduce){
-//        this.name = name;
-//        this.address = address;
-//        this.phoneNum = phoneNum;
-//        this.discount = discount;
-//        this.hour = hour;
-//        this.introduce = introduce;
-//        this.modifiedDate = LocalDateTime.now();
-//    }
 }

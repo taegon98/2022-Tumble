@@ -27,26 +27,26 @@
 
 <body>
 <div class="layout">
-    <form action="/cafe/enroll" method="post">
+    <form th:action="@{/cafe/modify/{id}(id = ${cafe.id})}" method="post">
         <label>카페 이름</label>
-        <input name="name" type="text">
+        <input name="name" type="text" th:value="${cafe.name}">
 
         <label>주소</label>
-        <input name="address" type="text">
+        <input name="address" type="text" th:value="${cafe.address}">
 
         <label>할인 혜택</label>
-        <input name="discount" type="text">
+        <input name="discount" type="text" th:value="${cafe.discount}">
 
         <label>번호</label>
-        <input name="phoneNum" type="text">
+        <input name="phoneNum" type="text" th:value="${cafe.phoneNum}">
 
         <label>영업시간</label>
-        <input name="hour" type="text">
+        <input name="hour" type="text" th:value="${cafe.hour}">
 
         <label>소개글</label>
-        <input name="introduce" type="text">
+        <input name="introduce" type="text" th:value="${cafe.introduce}">
 
-        <button type="submit">등록</button>
+        <button type="submit">수정</button>
     </form>
 
     <form action="/cafe">

@@ -2,12 +2,13 @@ package com.TumbleProject.cafe.service;
 
 import com.TumbleProject.cafe.domain.Cafe;
 import com.TumbleProject.cafe.repository.CafeRepository;
+import com.TumbleProject.community.entity.Board;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,10 +21,11 @@ public class CafeService {
     카페 작성
      */
     @Transactional
-    public Long join(Cafe cafe) {
+    public Integer join(Cafe cafe) {
         cafeRepository.save(cafe);
         return cafe.getId();
     }
+
 
     /*
     전체 카페 리스트
@@ -33,4 +35,7 @@ public class CafeService {
         return cafeRepository.findAll();
     }
 
+    public Cafe findCafeOne(Integer id) {
+        return cafeRepository.findById(id).get();
+    }
 }
