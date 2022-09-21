@@ -1,6 +1,7 @@
 package com.TumbleProject.mypage.controller;
 
 import com.TumbleProject.mypage.domain.Member;
+import com.TumbleProject.mypage.domain.SessionConst;
 import com.TumbleProject.mypage.repository.MemberRepository;
 import com.TumbleProject.mypage.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,7 +36,7 @@ public class MemberController {
         }
 
         memberService.save(member);
-        return "/home";
+        return "redirect:/";
     }
 
     @GetMapping("/login")
@@ -48,6 +50,16 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             return "signup/login";
         }
-        return "/home";
+
+        Member loginMember = memberService.authenticated(member.getUserId(), member.getPassword());
+
+       // if (loginMember == null) {
+        //    return "signup/login";
+       // }
+
+        //HttpSession session = request.getSession();
+        //session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+
+        return "redirect:/";
     }
 }
