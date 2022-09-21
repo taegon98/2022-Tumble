@@ -33,6 +33,11 @@ public class CommunityController {
         communityService.write(board);
         return "communityHtml/communityWriteFinish";
     }
+    @GetMapping("/community/view")
+    public String boardView(Model model,Integer id) {
+        model.addAttribute("board",communityService.boardView(id));
+        return "/communityHtml/boardView";
+    }
 
 
 

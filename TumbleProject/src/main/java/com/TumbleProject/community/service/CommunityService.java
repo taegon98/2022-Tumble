@@ -23,4 +23,8 @@ public class CommunityService {
     public List<Board> boardList() {
         return communityRepository.findAll();
     }
+
+    public Board boardView(Integer id) {
+        return communityRepository.findById(id).get();
+    }
 }
