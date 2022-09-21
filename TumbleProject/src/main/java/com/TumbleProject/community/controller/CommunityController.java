@@ -26,17 +26,26 @@ public class CommunityController {
         return "communityHtml/communityEnroll";
     }
 
-    @PostMapping("/community/write")
+    @PostMapping("/community")
     public String boardWrite(Board board)
     {
         communityService.write(board);
-        return "communityHtml/communityWriteFinish";
+        return "communityHtml/communityHome";
     }
     @GetMapping("/community/view")
     public String boardView(Model model,Integer id) {
         model.addAttribute("board",communityService.boardView(id));
         return "/communityHtml/boardView";
     }
+
+    @GetMapping("/community/delete")
+    public String boardDelete(Integer id) {
+        communityService.boardDelete(id);
+
+        return "redirect:/community";
+    }
+
+
 
 
 
