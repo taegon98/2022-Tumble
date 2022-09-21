@@ -39,7 +39,7 @@ public class FeedController {
 
         cafeService.join(cafe);
 
-        return "redirect:/";
+        return "redirect:/cafe";
     }
 
     @GetMapping(value = "/cafe")
