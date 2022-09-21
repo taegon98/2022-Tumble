@@ -29,14 +29,16 @@ public class MemberController {
     }
 
     @PostMapping("/signup")
-    public String singUp(@Validated @ModelAttribute Member member, BindingResult bindingResult) {
+    public String singUp(@Validated @ModelAttribute Member member, BindingResult bindingResult, Model model) {
+        model.addAttribute("message", "회원가입이 완료되었습니다.");
+        model.addAttribute("searchUrl", "/");
 
         if (bindingResult.hasErrors()) {
             return "signup/signupForm";
         }
 
         memberService.save(member);
-        return "redirect:/";
+        return "message";
     }
 
     @GetMapping("/login")
