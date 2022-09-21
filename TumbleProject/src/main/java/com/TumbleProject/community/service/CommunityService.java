@@ -2,22 +2,21 @@ package com.TumbleProject.community.service;
 
 import com.TumbleProject.community.entity.Board;
 import com.TumbleProject.community.repository.CommunityRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CommunityService {
-
-    private static Integer sequence=0;
-    @Autowired
-    private CommunityRepository communityRepository;
+    
+    private final CommunityRepository communityRepository;
 
     public void write(Board board) {
-        board.setId(++sequence);
         communityRepository.save(board);
-
     }
 
     public List<Board> boardList() {
@@ -26,5 +25,9 @@ public class CommunityService {
 
     public Board boardView(Integer id) {
         return communityRepository.findById(id).get();
+    }
+
+    public void boardDelete(Integer id) {
+        communityRepository.deleteById(id);
     }
 }
