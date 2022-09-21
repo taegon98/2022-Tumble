@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>글 수정</title>
+</head>
+
+<style>
+    .layout {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .layout input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .layout textarea {
+        width: 100%;
+        margin-top: 10px;
+        min-height: 300px;
+    }
+
+</style>
+
+<body>
+<div class="layout">
+    <form action="/cafe/enroll" method="post">
+        <label>카페 이름</label>
+        <input name="name" type="text">
+
+        <label>주소</label>
+        <input name="address" type="text">
+
+        <label>할인 혜택</label>
+        <input name="discount" type="text">
+
+        <label>번호</label>
+        <input name="phoneNum" type="text">
+
+        <label>영업시간</label>
+        <input name="hour" type="text">
+
+        <label>소개글</label>
+        <input name="introduce" type="text">
+
+        <button type="submit">등록</button>
+    </form>
+
+    <form action="/cafe">
+        <button>돌아가기</button>
+    </form>
+
+</div>
+</body>
+</html>

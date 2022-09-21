@@ -5,12 +5,6 @@
     <title>Tumble</title>
 </head>
 
-<!--<style>-->
-<!--    .layout {-->
-<!--        width: 500px;-->
-<!--        margin: 40px auto 0;-->
-<!--    }-->
-<!--</style>-->
 <body>
 <h1>카페소개</h1>
 
@@ -25,6 +19,7 @@
             <th>할인혜택</th>
             <th>영업시간</th>
             <th>소개글</th>
+
         </tr>
         </thead>
         <tbody>
@@ -36,6 +31,7 @@
             <td th:text="${cafe.discount}"></td>
             <td th:text="${cafe.hour}"></td>
             <td th:text="${cafe.introduce}"></td>
+            <button type="button"><a href="/cafe/modify">수정</a></button>
         </tr>
         </tbody>
     </table>
