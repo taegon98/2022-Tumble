@@ -4,6 +4,7 @@ import com.TumbleProject.community.entity.Board;
 import com.TumbleProject.community.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -12,8 +13,11 @@ public class CommunityController {
 
     @Autowired
     private CommunityService communityService;
+
+
     @GetMapping("/community")
-    public String communityHome() {
+    public String communityHome(Model model) {
+        model.addAttribute("board",communityService.boardList());
         return "communityHtml/communityHome";
     }
 
@@ -25,9 +29,12 @@ public class CommunityController {
     @PostMapping("/community/write")
     public String boardWrite(Board board)
     {
+
         communityService.write(board);
         return "communityHtml/communityWriteFinish";
     }
+
+
 
 
 }
