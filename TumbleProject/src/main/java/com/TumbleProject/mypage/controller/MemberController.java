@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -68,7 +69,18 @@ public class MemberController {
         if (session != null) {
             session.invalidate();
         }
-
         return "redirect:/";
+    }
+
+    @GetMapping("/mypage")
+    public String myPage(@SessionAttribute(value = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        model.addAttribute("message","회원가입이 필요합니다.");
+        model.addAttribute("searchUrl","/signup");
+        model.addAttribute("member", loginMember);
+
+        if (loginMember == null) {
+            return "message";
+        }
+        return "signup/myPage";
     }
 }
