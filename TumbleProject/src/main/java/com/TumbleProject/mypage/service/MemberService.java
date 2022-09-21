@@ -3,6 +3,7 @@ package com.TumbleProject.mypage.service;
 import com.TumbleProject.mypage.domain.Member;
 import com.TumbleProject.mypage.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MemberService {
 
+    @Autowired
     private final MemberRepository memberRepository;
 
     public Long save(Member member) {
