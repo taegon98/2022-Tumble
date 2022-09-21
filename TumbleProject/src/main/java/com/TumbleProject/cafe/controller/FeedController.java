@@ -42,6 +42,11 @@ public class FeedController {
         return "redirect:/cafe";
     }
 
+    @GetMapping("/cafe/modify")
+    public String cafeModify(){
+        return "cafeHtml/cafeModify";
+    }
+
     @GetMapping(value = "/cafe")
     public String list(Model model){
         List<Cafe> cafes = cafeService.findCafes();
