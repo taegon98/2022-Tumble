@@ -47,9 +47,22 @@ public class CommunityController {
     }
 
     @GetMapping("/community/modify/{id}")
-    public String boardModify(@PathVariable("id") Integer id)
+    public String boardModify(@PathVariable("id") Integer id,Model model)
     {
+        model.addAttribute("board",communityService.boardView(id));
         return "/communityHtml/boardmodify";
+    }
+
+    @PostMapping("/community/update/{id}")
+    public String boardUpdate(@PathVariable("id") Integer id,Board board)
+    {
+        Board boardTemp=communityService.boardView(id);
+        boardTemp.setTitle(board.getTitle());
+        boardTemp.setContent(board.getContent());
+
+        communityService.write(boardTemp);
+
+        return "redirect:/community";
     }
 
 
