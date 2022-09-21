@@ -2,12 +2,15 @@ package com.TumbleProject.community.controller;
 
 import com.TumbleProject.community.entity.Board;
 import com.TumbleProject.community.service.CommunityService;
+import com.TumbleProject.mypage.domain.Member;
+import com.TumbleProject.mypage.domain.SessionConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 public class CommunityController {
@@ -23,8 +26,14 @@ public class CommunityController {
     }
 
     @GetMapping("/community/enroll")
-    public String createFrom() {
-        return "communityHtml/communityEnroll";
+    public String createFrom(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        model.addAttribute("message", "회원가입이 필요합니다.");
+        model.addAttribute("searchUrl", "/signup");
+        if (loginMember == null) {
+            return "message";
+        } else {
+            return "communityHtml/communityEnroll";
+        }
     }
 
     @PostMapping("/community/write")
@@ -43,7 +52,7 @@ public class CommunityController {
     public String boardDelete(Integer id) {
         communityService.boardDelete(id);
 
-        return "redirect:/community";
+        return "redirect:/community/";
     }
 
     @GetMapping("/community/modify/{id}")
