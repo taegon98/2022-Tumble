@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -26,11 +27,11 @@ public class CommunityController {
         return "communityHtml/communityEnroll";
     }
 
-    @PostMapping("/community")
+    @PostMapping("/community/write")
     public String boardWrite(Board board)
     {
         communityService.write(board);
-        return "communityHtml/communityHome";
+        return "communityHtml/communityWriteFinish";
     }
     @GetMapping("/community/view")
     public String boardView(Model model,Integer id) {
@@ -44,6 +45,13 @@ public class CommunityController {
 
         return "redirect:/community";
     }
+
+    @GetMapping("/community/modify/{id}")
+    public String boardModify(@PathVariable("id") Integer id)
+    {
+        return "/communityHtml/boardmodify";
+    }
+
 
 
 
