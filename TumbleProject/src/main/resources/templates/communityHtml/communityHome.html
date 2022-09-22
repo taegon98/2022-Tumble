@@ -52,13 +52,17 @@
   </table>
   <button type="submit"><a th:href="@{/community(page = ${prePage - 1})}"> 이전 페이지 </a></button>
   <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-    <a th:if="${page != nowPage}" th:href="@{/community(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text="${page}"></a>
+    <a th:if="${page != nowPage}"
+       th:href=
+    "@{/community(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
+    th:text="${page}"></a>
     <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
   </th:block>
   <button type="submit"><a th:href="@{/community(page = ${nowPage})}"> 다음 페이지 </a></button>
 
   <form th:action="@{/community}" method="get">
-    <input type ="text" name="searchKeyword">
+
+    <input type="text" name="searchKeyword">
     <button type="submit">검색</button>
   </form>
 

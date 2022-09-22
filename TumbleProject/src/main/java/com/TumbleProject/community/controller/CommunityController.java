@@ -33,9 +33,11 @@ public class CommunityController {
                                 String searchKeyword)
     {
         Page<Board> list = null;
-        if(searchKeyword == null) {
+        if(searchKeyword == null)
+        {
             list=communityService.boardList(pageable);
-        }else {
+        }
+        else {
             list=communityService.boardSearchList(searchKeyword,pageable);
         }
 
@@ -49,9 +51,8 @@ public class CommunityController {
         int nextPage=nowPage+1;
 
 
-        model.addAttribute("board",communityService.boardList(pageable));
+        model.addAttribute("board",list);
         model.addAttribute("localDateTime", LocalDateTime.now());
-
 
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
