@@ -40,5 +40,4 @@ public class CafeService {
         return cafeRepository.findById(id).get();
     }
 
-
 }

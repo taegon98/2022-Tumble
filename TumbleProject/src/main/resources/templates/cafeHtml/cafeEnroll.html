@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <title>글 작성</title>
@@ -31,7 +31,7 @@
 
 <body>
 <div class="layout">
-    <form action="/cafe/enroll" th:action th:object="${cafe}" method="post">
+    <form action="/cafe/enroll" th:action th:object="${cafe}" method="post" enctype="multipart/form-data">
         <div>
             <label for="name">카페 이름</label>
             <input id="name" name="name" type="text" th:field="*{name}" th:errorclass="field-error">
@@ -67,7 +67,9 @@
             <input id="introduce" name="introduce" type="text" th:field="*{introduce}" th:errorclass="field-error">
             <div th:class="field-error" th:errors="*{introduce}" />
         </div>
-
+        <div>
+            <input multiple type ="file" name="files">
+        </div>
         <button type="submit">등록</button>
     </form>
 

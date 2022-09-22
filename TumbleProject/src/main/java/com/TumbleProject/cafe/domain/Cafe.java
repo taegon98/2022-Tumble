@@ -1,15 +1,15 @@
 package com.TumbleProject.cafe.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Entity @Getter @Setter
+@Entity @Data
 public class Cafe {
     @Id
     @GeneratedValue
