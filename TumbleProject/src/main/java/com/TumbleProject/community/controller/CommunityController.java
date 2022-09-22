@@ -27,10 +27,10 @@ public class CommunityController {
 
 
     @GetMapping("/community")
-    public String communityHome(Model model, @PageableDefault(page =0,size=20,sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
+    public String communityHome(@SessionAttribute(value = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model, @PageableDefault(page =0,size=20,sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("board",communityService.boardList(pageable));
         model.addAttribute("localDateTime", LocalDateTime.now());
-
+        model.addAttribute("member", loginMember);
         return "communityHtml/communityHome";
     }
 
