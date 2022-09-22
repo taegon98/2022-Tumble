@@ -7,6 +7,10 @@ import com.TumbleProject.mypage.domain.Member;
 import com.TumbleProject.mypage.domain.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +27,8 @@ public class CommunityController {
 
 
     @GetMapping("/community")
-    public String communityHome(Model model) {
-        model.addAttribute("board",communityService.boardList());
+    public String communityHome(Model model, @PageableDefault(page =0,size=20,sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("board",communityService.boardList(pageable));
         model.addAttribute("localDateTime", LocalDateTime.now());
 
         return "communityHtml/communityHome";

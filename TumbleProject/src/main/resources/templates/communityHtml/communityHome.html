@@ -42,7 +42,7 @@
         <td>
           <a th:text="${board.title}" th:href="@{/community/view(id=${board.id})}"></a>
         </td>
-      <td th:text="${board.writer}"></td>
+      <td th:text="${board.writer}"></td> // 이부분은 사용자 아이디가 들어가야함 태곤
       <td th:text="${board.writeDate}"></td>
       <td th:text="${board.countVisit}"></td>
 

@@ -4,6 +4,8 @@ import com.TumbleProject.community.entity.Board;
 import com.TumbleProject.community.repository.CommunityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
@@ -27,11 +29,14 @@ public class CommunityService {
         board.setWriteDate(dateFormat);
         board.setCountVisit(0);
         communityRepository.save(board);
+
+        // 이부분에 board.setWriter(사용자 id) 으로 와야함 태곤 태곤
         return board;
     }
 
-    public List<Board> boardList() {
-        return communityRepository.findAll();
+    public Page<Board> boardList(Pageable pageable) {
+
+        return communityRepository.findAll(pageable);
     }
 
     public Board boardView(Integer id) {
