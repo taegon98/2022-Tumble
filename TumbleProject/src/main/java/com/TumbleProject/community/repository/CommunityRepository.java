@@ -17,7 +17,7 @@ public interface CommunityRepository extends JpaRepository<Board,Integer> {
 
     @Modifying
     @Query("update Board p set p.countVisit = p.countVisit +1 where p.id= :id")
-    int updateCount(Integer id);
+    int updateCount(@Param("id") Integer id);
 
     Page<Board> findByTitleContaining(String searchKeyword,Pageable paging);
 
