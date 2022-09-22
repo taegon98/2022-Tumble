@@ -20,12 +20,14 @@ public class FeedController {
     private final CafeService cafeService;
 
     @GetMapping("/cafe/enroll")
-    public String cafeEnroll() {
+    public String cafeEnroll(Model model) {
+        model.addAttribute("cafe", new Cafe());
         return "cafeHtml/cafeEnroll";
     }
 
     @PostMapping(value = "/cafe/enroll")
-    public String create(@Valid Cafe cafeform, BindingResult bindingResult) {
+    public String create(@Valid Cafe cafeform, BindingResult bindingResult, Model model) {
+        model.addAttribute("cafe", cafeform);
         if (bindingResult.hasErrors()) {
             return "/cafeHtml/cafeEnroll";
         }

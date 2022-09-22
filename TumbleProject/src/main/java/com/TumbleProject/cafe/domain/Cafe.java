@@ -14,11 +14,16 @@ public class Cafe {
     @Id
     @GeneratedValue
     private Integer id;
-    @NotBlank
+    @NotBlank(message = "이름을 입력해주세요")
     private String name;
+    @NotBlank
     private String address;
+    @NotBlank
     private String phoneNum;
+    @NotBlank
     private String discount;
+    @NotBlank
     private String hour;
+    @NotBlank
     private String introduce;
 }

@@ -22,29 +22,52 @@
         margin-top: 10px;
         min-height: 300px;
     }
+    .field-error {
+         border-color: #dc3545;
+         color: #dc3545;
+         }
 
 </style>
 
 <body>
 <div class="layout">
-    <form action="/cafe/enroll" method="post">
-        <label>카페 이름</label>
-        <input name="name" type="text">
+    <form action="/cafe/enroll" th:action th:object="${cafe}" method="post">
+        <div>
+            <label for="name">카페 이름</label>
+            <input id="name" name="name" type="text" th:field="*{name}" th:errorclass="field-error">
+            <div th:class="field-error" th:errors="*{name}" />
+        </div>
 
-        <label>주소</label>
-        <input name="address" type="text">
+        <div>
+            <label for="address">주소</label>
+            <input id="address" name="address" type="text" th:field="*{address}" th:errorclass="field-error">
+            <div th:class="field-error" th:errors="*{address}" />
+        </div>
 
-        <label>할인 혜택</label>
-        <input name="discount" type="text">
+        <div>
+            <label for="discount">할인 혜택</label>
+            <input id="discount" name="discount" type="text" th:field="*{discount}" th:errorclass="field-error">
+            <div th:class="field-error" th:errors="*{discount}" />
+        </div>
 
-        <label>번호</label>
-        <input name="phoneNum" type="text">
+        <div>
+            <label for="phoneNum">번호</label>
+            <input id="phoneNum" name="phoneNum" type="text" th:field="*{phoneNum}" th:errorclass="field-error">
+            <div th:class="field-error" th:errors="*{discount}" />
+        </div>
 
-        <label>영업시간</label>
-        <input name="hour" type="text">
+        <div>
+            <label for="hour">영업시간</label>
+            <input id="hour"name="hour" type="text" th:field="*{hour}" th:errorclass="field-error">
+            <div th:class="field-error" th:errors="*{hour}" />
+        </div>
 
-        <label>소개글</label>
-        <input name="introduce" type="text">
+        <div>
+            <label for="introduce">소개글</label>
+            <input id="introduce" name="introduce" type="text" th:field="*{introduce}" th:errorclass="field-error">
+            <div th:class="field-error" th:errors="*{introduce}" />
+        </div>
+
 
         <button type="submit">등록</button>
     </form>
