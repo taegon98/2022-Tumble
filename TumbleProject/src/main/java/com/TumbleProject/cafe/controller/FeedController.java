@@ -23,7 +23,6 @@ public class FeedController {
     @GetMapping("/cafe/enroll")
     public String cafeEnroll(Model model) {
         model.addAttribute("cafe", new Cafe());
-        model.addAttribute("localDateTime", LocalDateTime.now());
         return "cafeHtml/cafeEnroll";
     }
 
@@ -33,7 +32,6 @@ public class FeedController {
         if (bindingResult.hasErrors()) {
             return "/cafeHtml/cafeEnroll";
         }
-
         Cafe cafe = new Cafe();
         cafe.setName(cafeform.getName());
         cafe.setAddress(cafeform.getAddress());
@@ -41,6 +39,7 @@ public class FeedController {
         cafe.setPhoneNum(cafeform.getPhoneNum());
         cafe.setHour(cafeform.getHour());
         cafe.setIntroduce(cafeform.getIntroduce());
+        cafe.setTime(String.valueOf(LocalDateTime.now()));
 
         cafeService.join(cafe);
 

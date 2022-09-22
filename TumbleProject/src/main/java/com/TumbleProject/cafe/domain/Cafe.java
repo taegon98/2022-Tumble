@@ -26,4 +26,5 @@ public class Cafe {
     private String hour;
     @NotBlank
     private String introduce;
+    private String time;
 }

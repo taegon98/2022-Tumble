@@ -19,7 +19,7 @@
             <th>할인혜택</th>
             <th>영업시간</th>
             <th>소개글</th>
-
+            <th>작성날짜</th>
         </tr>
         </thead>
         <tbody>
@@ -31,13 +31,12 @@
             <td th:text="${cafe.discount}"></td>
             <td th:text="${cafe.hour}"></td>
             <td th:text="${cafe.introduce}"></td>
+            <td th:text="${cafe.time}"></td>
             <button type = "button"><a th:href="@{/cafe/modify/{id}(id=${cafe.id})}">글수정</a></button>
-
         </tr>
         </tbody>
     </table>
 </div>
-    <a href="/cafe/enroll">게시글 작성</a>
     <a href="/cafe/enroll">게시글 작성</a>
 </body>
 </html>
