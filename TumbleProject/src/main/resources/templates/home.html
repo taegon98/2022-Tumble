@@ -23,41 +23,36 @@
 <div class="top-container">
     <a th:href="@{/}"><h1 class="logo">Tumble</h1></a>
     <nav class="top-menu" th:unless="${member}">
-        <a th:unless="${member} "href="/signup"> 회원가입 / </a>
+        <a th:unless="${member} "href="/signup"> 회원가입 </a>
         <a th:unless=${member} href="/login"> 로그인 </a>
     </nav>
     <br>
-    <div class="nav-bar">
+    <nav class="top-menu" th:if="${member}">
     <h5 th:if="${member} "th:text="|${member.name}님 환영합니다.|"></h5>
     <form th:if="${member}" th:action="@{/logout}" method="post">
         <button type="submit">로그아웃</button>
     </form>
-
-        <a href="/campaign"> 캠페인 소개</a>
-        <a href="/cafe"> 카페 소개 </a>
-        <a href="/community"> 커뮤니티 </a>
-        <a href="/mypage"> 마이페이지 </a>
-    </div>
+    </nav>
 </div>
+
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/campaign">캠페인 소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link active" aria-current="page" href="/cafe">카페 소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link active" aria-current="page" href="/community">커뮤니티</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link active" aria-current="page" href="/mypage">마이페이지</a>
                 </li>
             </ul>
         </div>
