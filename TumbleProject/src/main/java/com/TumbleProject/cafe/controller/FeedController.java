@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ public class FeedController {
     @GetMapping("/cafe/enroll")
     public String cafeEnroll(Model model) {
         model.addAttribute("cafe", new Cafe());
+        model.addAttribute("localDateTime", LocalDateTime.now());
         return "cafeHtml/cafeEnroll";
     }
 

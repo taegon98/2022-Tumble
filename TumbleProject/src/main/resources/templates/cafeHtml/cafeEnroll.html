@@ -67,6 +67,8 @@
             <input id="introduce" name="introduce" type="text" th:field="*{introduce}" th:errorclass="field-error">
             <div th:class="field-error" th:errors="*{introduce}" />
         </div>
+        <h1 th:text="${#temporals.format(localDateTime, 'yyyy-MM-dd HH:mm:ss')}"></h1>
+
 
 
         <button type="submit">등록</button>
