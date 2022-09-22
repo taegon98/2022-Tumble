@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Tumble</title>
+
+    <style>
+        table {
+            width: 70%;
+            border-top: 1px solid #444444;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border-bottom: 1px solid #444444;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +32,8 @@
             <th>할인혜택</th>
             <th>영업시간</th>
             <th>소개글</th>
-            <th>작성날짜</th>
+            <th>작성날짜
+            <th>수정</th>
 
         </tr>
         </thead>
@@ -33,7 +47,12 @@
             <td th:text="${cafe.hour}"></td>
             <td th:text="${cafe.introduce}"></td>
             <td th:text="${cafe.hour}"></td>
-            <button type = "button"><a th:href="@{/cafe/modify/{id}(id=${cafe.id})}">글수정</a></button>
+            <td>
+                <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
+                    <button>수정</button>
+                </form>
+            </td>
+
 
         </tr>
         </tbody>
@@ -41,6 +60,7 @@
 </div>
     <a href="/cafe/cafeMap">지도 보기</a>
     <a href="/cafe/enroll">게시글 작성</a>
+<a href="/">돌아가기</a>
 </body>
 </html>
 
