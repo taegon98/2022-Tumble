@@ -64,17 +64,17 @@
         }
 
         .lnb a {
-            background-color: green;
-            color: #fff;
+            background-color: #fff;
+            color: #222;
             padding: 3px 10px;
-            border-radius: 30px;
         }
+
     </style>
 </head>
 <body>
 <div>
     <!-- header 영역 -->
-    <header>
+    <header th:fragment="headerFragment">
         <!-- 상단 nav bar -->
         <nav>
             <!-- logo -->
@@ -89,16 +89,33 @@
                 <a href="/mypage">마이페이지</a>
             </div>
             <!-- lnb -->
-            <div class="lnb">
+            <div th:unless=${member} class="lnb">
                 <a th:unless="${member} "href="/signup"> 회원가입 </a>
                 <a th:unless=${member} href="/login"> 로그인 </a>
-                <h5 th:if="${member} "th:text="|${member.name}님 환영합니다.|"></h5>
-                <form th:if="${member}" th:action="@{/logout}" method="post">
-                    <button type="submit">로그아웃</button>
-                </form>
             </div>
+            <span th:if="${member}" class="lnb">
+                <p id="name" th:if="${member} "th:text="|${member.name}님 환영합니다.|"></p>
+                <form th:if="${member}" th:action="@{/logout}" method="post">
+                    <a th:href="@{/}"><button type="submit"> 로그아웃</button></a>
+                </form>
+            </span>
         </nav>
     </header>
+
+    <footer class="page-footer font-small teal pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    <h6 class="text-uppercase font-weight-bold">이용약관 | 개인정보처리방침</h6>
+                    <p>전화 문의 : 010-5702-2378 이메일 : taegon1998@gmail.com</p>
+                    <p>소재지 : 대구광역시 북구 대현로</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3">© 2022 Copyright:
+            <a href="/"> taegon.com</a>
+        </div>
+    </footer>
 </div>
 </body>
 </html>
