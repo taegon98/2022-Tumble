@@ -25,9 +25,9 @@ public class FeedController {
     }
 
     @PostMapping(value = "/cafe/enroll")
-    public String create(@Valid Cafe cafeform, BindingResult result) {
-        if (result.hasErrors()) {
-            return "/cafe/enroll";
+    public String create(@Valid Cafe cafeform, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/cafeHtml/cafeEnroll";
         }
 
         Cafe cafe = new Cafe();
