@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
 public class FeedController {
     private final CafeService cafeService;
-
+    @GetMapping("/cafe/cafeMap")
+    public String cafeMap(){
+        return "cafeHtml/cafeMap";
+    }
     @GetMapping("/cafe/enroll")
     public String cafeEnroll(Model model) {
         model.addAttribute("cafe", new Cafe());
