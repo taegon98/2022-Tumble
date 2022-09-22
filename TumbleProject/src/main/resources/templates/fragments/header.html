@@ -1,9 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
-    <style>
+  <style>
             * {
         box-sizing: border-box;
         }
@@ -68,16 +69,36 @@
             color: #222;
             padding: 3px 10px;
         }
-
     </style>
 </head>
 <body>
-<div>
-    <!-- header 영역 -->
-    <div th:replace="/fragments/header.html :: headerFragment"></div>
-    <div th:replace="/fragments/footer.html :: footerFragment"></div>
+<header th:fragment="headerFragment">
+    <!-- 상단 nav bar -->
+    <nav>
+        <!-- logo -->
+        <div class="logo">
+            <a th:href="@{/}"><img src="images/logo.jpg" alt="이미지 없음" width="120" height="50"></a>
+        </div>
+        <!-- gnb -->
+        <div class="gnb">
+            <a href="/campaign">Campaign</a>
+            <a href="/cafe">Cafe</a>
+            <a href="/community">Community</a>
+            <a href="/mypage">Mypage</a>
+        </div>
+        <!-- lnb -->
+        <div th:unless=${member} class="lnb">
+            <a th:unless="${member} "href="/signup"> 회원가입 </a>
+            <a th:unless=${member} href="/login"> 로그인 </a>
+        </div>
+        <span th:if="${member}" class="lnb">
+                <p id="name" th:if="${member} "th:text="|${member.name}님 환영합니다.|"></p>
+                <form th:if="${member}" th:action="@{/logout}" method="post">
+                    <a th:href="@{/}"><button type="submit"> 로그아웃</button></a>
+                </form>
+            </span>
+    </nav>
+</header>
 
-</div>
 </body>
 </html>
-
