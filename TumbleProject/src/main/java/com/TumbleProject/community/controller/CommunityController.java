@@ -28,13 +28,31 @@ public class CommunityController {
 
 
     @GetMapping("/community")
-    public String communityHome(@SessionAttribute(value = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model, @PageableDefault(page =0,size=20,sort="id",direction = Sort.Direction.DESC) Pageable pageable)
+    public String communityHome(Model model, @PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable)
     {
 
         Page<Board> list=communityService.boardList(pageable);
+
+
+
+        int nowPage=list.getPageable().getPageNumber() + 1;
+        int startPage=Math.max(nowPage-4,1);
+        int endPage=Math.min(nowPage+5,list.getTotalPages());
+
+        int prePage=nowPage-1;
+        int nextPage=nowPage+1;
+
+
         model.addAttribute("board",communityService.boardList(pageable));
         model.addAttribute("localDateTime", LocalDateTime.now());
-        model.addAttribute("member", loginMember);
+
+
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+        model.addAttribute("prePage",prePage);
+        model.addAttribute("nextPage",nextPage);
+
         return "communityHtml/communityHome";
     }
 
