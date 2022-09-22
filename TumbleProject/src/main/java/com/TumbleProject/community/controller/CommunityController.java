@@ -25,7 +25,7 @@ public class CommunityController {
     @GetMapping("/community/enroll")
     public String createFrom(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
         model.addAttribute("message", "로그인이 필요합니다.");
-        model.addAttribute("searchUrl", "/signup");
+        model.addAttribute("searchUrl", "/login");
         if (loginMember == null) {
             return "message";
         } else {
