@@ -4,6 +4,8 @@ import com.TumbleProject.community.entity.Board;
 import com.TumbleProject.community.repository.CommunityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class CommunityService {
 
 
@@ -23,6 +25,7 @@ public class CommunityService {
     public Board write(Board board) {
         String dateFormat = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm"));
         board.setWriteDate(dateFormat);
+        board.setCountVisit(0);
         communityRepository.save(board);
         return board;
     }
@@ -39,5 +42,9 @@ public class CommunityService {
         communityRepository.deleteById(id);
     }
 
+    @Transactional
+    public int updateView(Integer id) {
+        return communityRepository.updateCount(id);
+    }
 
 }

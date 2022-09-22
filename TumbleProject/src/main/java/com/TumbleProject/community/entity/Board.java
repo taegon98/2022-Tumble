@@ -1,9 +1,6 @@
 package com.TumbleProject.community.entity;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,8 +10,8 @@ import java.util.Date;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +20,11 @@ public class Board {
     @Column(length = 100,nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT",nullable = false)
     private String content;
     private String writer;
     private String writeDate;
-    private Integer viewCount;
+
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private Integer countVisit;
 
 }

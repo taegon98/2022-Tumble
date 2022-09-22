@@ -1,9 +1,11 @@
 package com.TumbleProject.community.controller;
 
 import com.TumbleProject.community.entity.Board;
+import com.TumbleProject.community.repository.CommunityRepository;
 import com.TumbleProject.community.service.CommunityService;
 import com.TumbleProject.mypage.domain.Member;
 import com.TumbleProject.mypage.domain.SessionConst;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
+@RequiredArgsConstructor
 @Controller
 public class CommunityController {
 
     @Autowired
     private CommunityService communityService;
+
 
 
     @GetMapping("/community")
@@ -46,6 +50,8 @@ public class CommunityController {
     @GetMapping("/community/view")
     public String boardView(Model model,Integer id) {
         model.addAttribute("board",communityService.boardView(id));
+        communityService.updateView(id);
+
         return "/communityHtml/boardView";
     }
 
