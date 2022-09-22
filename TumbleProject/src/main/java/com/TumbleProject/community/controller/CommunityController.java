@@ -8,6 +8,7 @@ import com.TumbleProject.mypage.domain.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -27,7 +28,10 @@ public class CommunityController {
 
 
     @GetMapping("/community")
-    public String communityHome(@SessionAttribute(value = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model, @PageableDefault(page =0,size=20,sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
+    public String communityHome(@SessionAttribute(value = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model, @PageableDefault(page =0,size=20,sort="id",direction = Sort.Direction.DESC) Pageable pageable)
+    {
+
+        Page<Board> list=communityService.boardList(pageable);
         model.addAttribute("board",communityService.boardList(pageable));
         model.addAttribute("localDateTime", LocalDateTime.now());
         model.addAttribute("member", loginMember);
