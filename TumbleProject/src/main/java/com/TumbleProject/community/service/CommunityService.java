@@ -23,6 +23,7 @@ public class CommunityService {
 
 
     private final CommunityRepository communityRepository;
+    private static int pageNum;
 
     public Board write(Board board) {
         String dateFormat = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm"));
@@ -39,9 +40,14 @@ public class CommunityService {
         return communityRepository.findAll(pageable);
     }
 
+    public Page<Board> boardSearchList(String searchKeyword,Pageable pageable) {
+        return communityRepository.findByTitleContaining(searchKeyword,pageable);
+    }
+
     public Board boardView(Integer id) {
         return communityRepository.findById(id).get();
     }
+
 
     public void boardDelete(Integer id) {
         communityRepository.deleteById(id);
@@ -50,6 +56,14 @@ public class CommunityService {
     @Transactional
     public int updateView(Integer id) {
         return communityRepository.updateCount(id);
+    }
+
+    public void currPage(Integer num) {
+        this.pageNum=num;
+    }
+
+    public int currRePage() {
+        return this.pageNum;
     }
 
 }

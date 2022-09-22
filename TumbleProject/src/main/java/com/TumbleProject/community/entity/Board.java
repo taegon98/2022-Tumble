@@ -27,4 +27,6 @@ public class Board {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private Integer countVisit;
 
+
+
 }

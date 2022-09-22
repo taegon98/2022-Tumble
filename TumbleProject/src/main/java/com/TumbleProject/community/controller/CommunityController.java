@@ -28,14 +28,20 @@ public class CommunityController {
 
 
     @GetMapping("/community")
-    public String communityHome(Model model, @PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable)
+    public String communityHome(Model model,
+                                @PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
+                                String searchKeyword)
     {
-
-        Page<Board> list=communityService.boardList(pageable);
-
+        Page<Board> list = null;
+        if(searchKeyword == null) {
+            list=communityService.boardList(pageable);
+        }else {
+            list=communityService.boardSearchList(searchKeyword,pageable);
+        }
 
 
         int nowPage=list.getPageable().getPageNumber() + 1;
+        communityService.currPage(nowPage);
         int startPage=Math.max(nowPage-4,1);
         int endPage=Math.min(nowPage+5,list.getTotalPages());
 
@@ -78,6 +84,9 @@ public class CommunityController {
     public String boardView(Model model,Integer id) {
         model.addAttribute("board",communityService.boardView(id));
         communityService.updateView(id);
+
+        int temp=communityService.currRePage();
+        model.addAttribute("currPage",temp);
 
         return "/communityHtml/boardView";
     }
