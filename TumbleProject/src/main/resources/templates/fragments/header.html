@@ -85,16 +85,16 @@ nav > div {
             <a href="/mypage">Mypage</a>
         </div>
         <!-- lnb -->
-        <div th:unless=${member} class="lnb">
-            <a th:unless="${member} "href="/signup"> 회원가입 </a>
-            <a th:unless=${member} href="/login"> 로그인 </a>
+        <div th:unless=${loginMember} class="lnb">
+            <a th:unless="${loginMember} "href="/signup"> 회원가입 </a>
+            <a th:unless=${loginMember} href="/login"> 로그인 </a>
         </div>
-        <span th:if="${member}" class="lnb">
-                <p id="name" th:if="${member} "th:text="|${member.name}님 환영합니다.|"></p>
-                <form th:if="${member}" th:action="@{/logout}" method="post">
+        <span th:if="${loginMember}" class="lnb">
+                <p id="name" th:if="${loginMember} "th:text="|${loginMember.name}님 환영합니다.|"></p>
+                <form th:if="${loginMember}" th:action="@{/logout}" method="post">
                     <a th:href="@{/}"><button type="submit"> 로그아웃</button></a>
                 </form>
-            </span>
+        </span>
     </nav>
 </header>
 
