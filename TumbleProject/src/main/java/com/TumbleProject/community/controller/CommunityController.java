@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @Controller
 public class CommunityController {
 
@@ -19,6 +21,8 @@ public class CommunityController {
     @GetMapping("/community")
     public String communityHome(Model model) {
         model.addAttribute("board",communityService.boardList());
+        model.addAttribute("localDateTime", LocalDateTime.now());
+
         return "communityHtml/communityHome";
     }
 

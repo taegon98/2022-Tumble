@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 
 @Service
@@ -16,8 +20,11 @@ public class CommunityService {
 
     private final CommunityRepository communityRepository;
 
-    public void write(Board board) {
+    public Board write(Board board) {
+        String dateFormat = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy/MM/dd HH:mm"));
+        board.setWriteDate(dateFormat);
         communityRepository.save(board);
+        return board;
     }
 
     public List<Board> boardList() {

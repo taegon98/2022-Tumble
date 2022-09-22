@@ -10,20 +10,29 @@
     width: 500px;
     margin: 40px auto 0;
   }
+
+  td,h2 {
+    text-align: center;
+  }
+
 </style>
 <body>
 <h1>Tumble Community 입니다.</h1>
+
 <li>
   <button type="submit"><a href="/community/enroll"> 글 작성 </a></button>
   <button type="submit"><a href="/"> 돌아가기 </a></button>
 </li>
 
+<h2>글 목록</h2>
 <div class="layout">
   <table>
     <thead>
     <tr>
       <th>글번호</th>
       <th>제목</th>
+      <th>작성자</th>
+      <th>작성일자</th>
       <th>조회수</th>
     </tr>
     </thead>
@@ -33,7 +42,11 @@
         <td>
           <a th:text="${board.title}" th:href="@{/community/view(id=${board.id})}"></a>
         </td>
+      <td th:text="${board.writer}"></td>
+      <td th:text="${board.writeDate}"></td>
+      <td th:text="${board.viewCount}"></td>
     </tr>
+
     </tbody>
   </table>
 </div>
