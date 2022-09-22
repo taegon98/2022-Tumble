@@ -51,8 +51,9 @@ public class CommunityController {
         communityService.write(board);
         return "redirect:/community";
     }
+
     @GetMapping("/community/view")
-    public String boardView(Model model,@PathVariable Integer id) {
+    public String boardView(Model model,Integer id) {
         model.addAttribute("board",communityService.boardView(id));
         communityService.updateView(id);
 
