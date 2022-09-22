@@ -22,7 +22,7 @@ public class HomeController {
         if (loginMember == null) {
             return "/home";
         }
-        model.addAttribute("member", loginMember);
+        model.addAttribute("loginMember", loginMember);
         return "/home";
     }
 }

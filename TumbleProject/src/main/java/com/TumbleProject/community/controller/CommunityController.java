@@ -50,7 +50,6 @@ public class CommunityController {
         int prePage=nowPage-1;
         int nextPage=nowPage+1;
 
-
         model.addAttribute("board",list);
         model.addAttribute("localDateTime", LocalDateTime.now());
 
@@ -67,6 +66,7 @@ public class CommunityController {
     public String createFrom(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
         model.addAttribute("message", "로그인이 필요합니다.");
         model.addAttribute("searchUrl", "/login");
+        model.addAttribute("loginMember",loginMember);
         if (loginMember == null) {
             return "message";
         } else {
@@ -77,6 +77,7 @@ public class CommunityController {
     @PostMapping("/community/write")
     public String boardWrite(Board board)
     {
+
         communityService.write(board);
         return "redirect:/community";
     }

@@ -17,8 +17,8 @@
 
 </style>
 <body>
+<div th:replace="/fragments/header.html :: headerFragment"></div>
 <h1>Tumble Community 입니다.</h1>
-
 <li>
   <button type="submit"><a href="/community/enroll"> 글 작성 </a></button>
   <button type="submit"><a href="/"> 돌아가기 </a></button>
@@ -37,6 +37,7 @@
     </tr>
     </thead>
     <tbody>
+
     <tr th:each="board : ${board}">
         <td th:text="${board.id}">1</td>
         <td>
@@ -68,6 +69,6 @@
 
 
 </div>
-
+<div th:replace="/fragments/footer.html :: footerFragment"></div>
 </body>
 </html>
