@@ -6,20 +6,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
-
 public class FeedController {
     private final CafeService cafeService;
 
     @GetMapping("/cafe/enroll")
-    public String cafeEnroll(){
+    public String cafeEnroll() {
         return "cafeHtml/cafeEnroll";
     }
 
@@ -42,15 +43,34 @@ public class FeedController {
         return "redirect:/cafe";
     }
 
-    @GetMapping("/cafe/modify")
-    public String cafeModify(){
-        return "cafeHtml/cafeModify";
-    }
-
     @GetMapping(value = "/cafe")
-    public String list(Model model){
+    public String list(Model model) {
         List<Cafe> cafes = cafeService.findCafes();
         model.addAttribute("cafes", cafes);
         return "cafeHtml/cafe";
     }
+
+    @GetMapping(value = "/cafe/modify/{id}")
+    public String cafeModify(@PathVariable("id") Integer id, Model model)
+    {
+        model.addAttribute("cafe", cafeService.findCafeOne(id));
+        return "/cafeHtml/cafeModify";
+
+    }
+
+    @PostMapping(value = "/cafe/modify/{Id}")
+    public String updateCafe(@ModelAttribute("Cafe") Cafe c){
+        Cafe cafe = new Cafe();
+        cafe.setId(c.getId());
+        cafe.setName(c.getName());
+        cafe.setAddress(c.getAddress());
+        cafe.setPhoneNum(c.getPhoneNum());
+        cafe.setDiscount(c.getDiscount());
+        cafe.setHour(c.getHour());
+        cafe.setIntroduce(c.getIntroduce());
+
+        cafeService.join(cafe);
+        return "redirect:/cafe";
+    }
+
 }
