@@ -38,6 +38,8 @@
         </tr>
         </thead>
         <tbody>
+
+
         <tr th:each="cafe : ${cafes}">
             <td th:text="${cafe.id}"></td>
             <td th:text="${cafe.name}"></td>
@@ -47,19 +49,23 @@
             <td th:text="${cafe.hour}"></td>
             <td th:text="${cafe.introduce}"></td>
             <td th:text="${cafe.hour}"></td>
+
             <td>
                 <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
                     <button>수정</button>
                 </form>
             </td>
-
-
         </tr>
         </tbody>
     </table>
 </div>
+
+<tr th:each="files : ${file}">
+    <img th:src="@{/img/}+${files.filename}">
+</tr>
     <a href="/cafe/cafeMap">지도 보기</a>
     <a href="/cafe/enroll">게시글 작성</a>
 <a href="/">돌아가기</a>
+</body>
 </html>
 

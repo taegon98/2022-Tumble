@@ -39,7 +39,6 @@ public class FeedController {
     @PostMapping(value = "/cafe/enroll")
     public String create(@Valid Cafe cafeform, @RequestPart MultipartFile files, BindingResult bindingResult, Model model) throws IOException {
         model.addAttribute("cafe", cafeform);
-
         if (bindingResult.hasErrors()) {
             return "/cafeHtml/cafeEnroll";
         }
@@ -69,10 +68,10 @@ public class FeedController {
         destinationFile.getParentFile().mkdirs();
         files.transferTo(destinationFile);
 
-        file.setFilename(sourceFileName);
+        file.setFilename(destinationFileName);
         file.setFileOriName(sourceFileName);
         file.setFileUrl(fileUrl);
-
+        model.addAttribute("img", file);
         fileService.save(file);
         cafeService.join(cafe);
 
@@ -83,6 +82,8 @@ public class FeedController {
     public String list(Model model) {
         List<Cafe> cafes = cafeService.findCafes();
         model.addAttribute("cafes", cafes);
+        List<Files> file = fileService.findFiles();
+        model.addAttribute("file", file);
         return "cafeHtml/cafe";
     }
 

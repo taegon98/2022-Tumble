@@ -1,10 +1,13 @@
 package com.TumbleProject.cafe.service;
 
+import com.TumbleProject.cafe.domain.Cafe;
 import com.TumbleProject.cafe.domain.Files;
 import com.TumbleProject.cafe.repository.FilesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +24,10 @@ public class FileService {
         f.setFileUrl(files.getFileUrl());
 
         filesRepository.save(f);
+    }
+
+    public List<Files> findFiles(){
+        return filesRepository.findAll();
     }
 
 }
