@@ -58,8 +58,8 @@ public class FeedController {
 
         File destinationFile;
         String destinationFileName;
-        String fileUrl = "/Users/2sh/Desktop/spring/2022-hackathon/TumbleProject/src/main/resources/static/img/";
-
+        //String fileUrl = "/Users/2sh/Desktop/spring/2022-hackathon/TumbleProject/src/main/resources/static/img/";
+        String fileUrl = System.getProperty("user.dir") + "/src/main/resources/static/img/";
         do{
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
             destinationFile = new File(fileUrl + destinationFileName);
