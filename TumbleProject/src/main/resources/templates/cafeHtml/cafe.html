@@ -3,22 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Tumble</title>
-
-    <style>
-        table {
-            width: 70%;
-            border-top: 1px solid #444444;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border-bottom: 1px solid #444444;
-            padding: 10px;
-        }
-    </style>
+    <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
 </head>
 
 <body>
+<div th:replace="/fragments/header.html :: headerFragment"></div>
 <h1>카페소개</h1>
 
 <div class="layout">

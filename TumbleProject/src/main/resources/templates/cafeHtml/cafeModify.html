@@ -1,58 +1,67 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/user.css}" href="../css/user.css" rel="stylesheet">
+    <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
     <title>글 수정</title>
 </head>
-
-<style>
-    .layout {
-        width: 500px;
-        margin: 0 auto;
-        margin-top: 40px;
-    }
-
-    .layout input {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .layout textarea {
-        width: 100%;
-        margin-top: 10px;
-        min-height: 300px;
-    }
-
-</style>
-
 <body>
-<div class="layout">
-    <form th:action="@{/cafe/modify/{id}(id = ${cafe.id})}" method="post">
-        <label>카페 이름</label>
-        <input name="name" type="text" th:value="${cafe.name}">
-
-        <label>주소</label>
-        <input name="address" type="text" th:value="${cafe.address}">
-
-        <label>할인 혜택</label>
-        <input name="discount" type="text" th:value="${cafe.discount}">
-
-        <label>번호</label>
-        <input name="phoneNum" type="text" th:value="${cafe.phoneNum}">
-
-        <label>영업시간</label>
-        <input name="hour" type="text" th:value="${cafe.hour}">
-
-        <label>소개글</label>
-        <input name="introduce" type="text" th:value="${cafe.introduce}">
-
-        <button type="submit">수정</button>
+<h2 class="title">카페 정보 수정</h2>
+<div class="go-center">
+    <form th:action="@{/cafe/modify/{id}(id = ${cafe.id})}" method="post" class="cafe-container" style="width: 80%;">
+        <!-- upload image -->
+        <div id="image_container">
+            <input class="img-file-up" onchange="setPreviewImg(event);" type="file" name="image" accept="image/*">
+            <div id="preview-img"></div>
+        </div>
+        <!-- name -->
+        <div class="info-container">
+            <textarea cols="50" name="name" type="text" th:value="${cafe.name}" autofocus required wrap="hard" placeholder="상호명"></textarea>
+        </div>
+        <!-- adress -->
+        <div class="info-container">
+            <textarea cols="50" name="address" type="text" th:value="${cafe.address}" autofocus required wrap="hard" placeholder="주소"></textarea>
+        </div>
+        <!-- phone_num -->
+        <div class="info-container">
+            <textarea cols="50" name="phoneNum" type="text" th:value="${cafe.phoneNum}" autofocus required wrap="hard" placeholder="번호"></textarea>
+        </div>
+        <!-- hour -->
+        <div class="info-container">
+            <textarea cols="50" rows="10" name="hour" type="text" th:value="${cafe.hour}" autofocus required wrap="hard" placeholder="영업시간"></textarea>
+        </div>
+        <!-- discount -->
+        <div class="info-container">
+            <textarea cols="50" name="discount" type="text" th:value="${cafe.discount}" autofocus required wrap="hard" placeholder="할인혜택"></textarea>
+        </div>
+        <!-- introduce -->
+        <div class="info-container">
+            <textarea cols="50" rows="10" name="introduce" type="text" th:value="${cafe.introduce}" autofocus required wrap="hard" placeholder="소개란"></textarea>
+        </div>
+        <button type="submit" class="cafe-btn">수정완료</button>
     </form>
-
     <form action="/cafe">
         <button>돌아가기</button>
     </form>
-
 </div>
+<script>
+    function setPreviewImg(event){
+
+        var reader = new FileReader();
+
+        var imgpreview = document.querySelector("div#preview-img");
+
+        reader.onload = function(event){
+            var img = document.createElement("img");
+            img.setAttribute("src",event.target.result);
+            img.setAttribute("class","imgV");
+            imgpreview.appendChild(img);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 </body>
 </html>
