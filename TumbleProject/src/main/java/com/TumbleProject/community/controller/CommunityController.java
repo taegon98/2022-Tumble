@@ -75,9 +75,9 @@ public class CommunityController {
     }
 
     @PostMapping("/community/write")
-    public String boardWrite(Board board)
+    public String boardWrite(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Board board, Model model)
     {
-
+        board.setWriter(loginMember.getUserId());
         communityService.write(board);
         return "redirect:/community";
     }
