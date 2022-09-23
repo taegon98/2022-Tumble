@@ -21,7 +21,7 @@ public class Board {
     private String title;
 
     private String content;
-    private String writer; // 태곤 태곤 사용자의 아이디가 넘어와야함
+    private String writer;
     private String writeDate;
 
     @Column(columnDefinition = "integer default 0", nullable = false)

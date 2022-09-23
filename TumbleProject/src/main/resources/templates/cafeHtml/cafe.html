@@ -34,6 +34,7 @@
             <th>소개글</th>
             <th>작성날짜
             <th>수정</th>
+            <th>삭제</th>
 
         </tr>
         </thead>
@@ -53,6 +54,11 @@
             <td>
                 <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
                     <button>수정</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/cafe/delete/{id}(id=${cafe.id})}">
+                    <button>삭제</button>
                 </form>
             </td>
         </tr>

@@ -58,8 +58,8 @@ public class FeedController {
 
         File destinationFile;
         String destinationFileName;
-        String fileUrl = "/Users/2sh/Desktop/spring/2022-hackathon/TumbleProject/src/main/resources/static/img/";
-
+        //String fileUrl = "/Users/2sh/Desktop/spring/2022-hackathon/TumbleProject/src/main/resources/static/img/";
+        String fileUrl = System.getProperty("user.dir") + "/src/main/resources/static/img/";
         do{
             destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension;
             destinationFile = new File(fileUrl + destinationFileName);
@@ -107,6 +107,13 @@ public class FeedController {
         cafe.setIntroduce(c.getIntroduce());
 
         cafeService.join(cafe);
+        return "redirect:/cafe";
+    }
+
+    @GetMapping("/cafe/delete")
+    public String cafeDelete(Integer id) {
+        cafeService.boardDelete(id);
+
         return "redirect:/cafe";
     }
 
