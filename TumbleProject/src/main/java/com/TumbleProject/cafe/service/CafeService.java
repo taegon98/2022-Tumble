@@ -40,4 +40,8 @@ public class CafeService {
         return cafeRepository.findById(id).get();
     }
 
+    public void boardDelete(Integer id) {
+        cafeRepository.deleteById(id);
+    }
+
 }

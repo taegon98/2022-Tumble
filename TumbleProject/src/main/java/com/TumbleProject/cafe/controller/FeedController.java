@@ -110,5 +110,12 @@ public class FeedController {
         return "redirect:/cafe";
     }
 
+    @GetMapping("/cafe/delete")
+    public String cafeDelete(Integer id) {
+        cafeService.boardDelete(id);
+
+        return "redirect:/cafe";
+    }
+
 
 }

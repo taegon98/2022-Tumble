@@ -34,6 +34,7 @@
             <th>소개글</th>
             <th>작성날짜
             <th>수정</th>
+            <th>삭제</th>
 
         </tr>
         </thead>
@@ -55,6 +56,7 @@
                     <button>수정</button>
                 </form>
             </td>
+            <td><a th:href="@{/cafe/delete(id=${cafe.id})}">글삭제</a></td>
         </tr>
         </tbody>
     </table>
