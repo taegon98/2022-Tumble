@@ -56,7 +56,11 @@
                     <button>수정</button>
                 </form>
             </td>
-            <td><a th:href="@{/cafe/delete(id=${cafe.id})}">글삭제</a></td>
+            <td>
+                <form th:action="@{/cafe/delete/{id}(id=${cafe.id})}">
+                    <button>삭제</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
