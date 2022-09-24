@@ -31,13 +31,10 @@
 - ETC : Kakao 지도 Web API
 
 > > **Spring Boot**
-> > > > Http Session세션을 사용해서 로그인에 성공하면 session 속성에 유저 정보를 저장한다.
-> > > > session객체에 로그인 정보가 유지된다
-> > > > session.invalidate() 메서드를 통해 로그아웃 처리를 할 수 있다.
-> > > > 회원 / 비회원 권한 구별
+> > > > 1. Http Session세션을 사용해서 로그인에 성공하면 session 속성에 유저 정보를 저장한다.
+> > > > 2. session객체에 로그인 정보가 유지된다
+> > > > 3. session.invalidate() 메서드를 통해 로그아웃 처리를 할 수 있다.
+> > > > 4. 회원 / 비회원 권한 구별
 
-로그인에 성공하면 session 기본 객체의 특정 속성에 데이터를 기록한다.
-이후로 session 기본 객체의 특정 속성이 존재하면 로그인한 것으로 간주한다.
-로그아웃할 경우 session.invalidate() 메서드를 호출하여 세션을 종료한다.
 ----------
 ### 시연 영상
