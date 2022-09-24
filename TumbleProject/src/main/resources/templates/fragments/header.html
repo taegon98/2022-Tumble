@@ -10,12 +10,12 @@
     <div class="for-user">
         <a style="text-decoration-line: none; color:black;" th:unless="${loginMember}" href="/login">로그인&emsp;|</a>
         <a style="text-decoration-line: none; color:black;" th:unless="${loginMember}" href="/signup">회원가입</a>
-        <span th:if="*{loginMember}">
-            <p th:if="*{loginMember}" th:text="|${loginMember.name}님 환영합니다.|">로그인 정보</p>
-            <form th:action="@{/logout}" method="post">
+        <div style="display:flex;">
+            <span th:if="*{loginMember}" th:text="|${loginMember.name}님 환영합니다.|"></span>
+            <form th:if="*{loginMember}"th:action="@{/logout}" method="post">
                 <button type="submit" class="logout-btn" th:if="${loginMember}">로그아웃</button>
             </form>
-        </span>
+        </div>
     </div>
     <!-- nav bar  -->
     <div class="nav">
