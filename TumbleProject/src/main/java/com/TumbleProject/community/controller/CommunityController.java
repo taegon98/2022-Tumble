@@ -79,18 +79,36 @@ public class CommunityController {
     {
         board.setWriter(loginMember.getUserId());
         communityService.write(board);
+        System.out.println("loginMember = " + loginMember);
         return "redirect:/community";
     }
 
     @GetMapping("/community/view")
-    public String boardView(Model model,Integer id) {
+    public String boardView(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,Model model,Integer id) {
         model.addAttribute("board",communityService.boardView(id));
         communityService.updateView(id);
 
         int temp=communityService.currRePage();
         model.addAttribute("currPage",temp);
 
-        return "/communityHtml/boardView";
+        if(loginMember==null)
+        {
+            return "/communityHtml/boardNonuserView";
+        }
+        else{
+            Board board = communityService.boardView(id);
+            String writer = board.getWriter();
+            String userId = loginMember.getUserId();
+
+            if(writer.equals(userId))
+            {
+                return "/communityHtml/boardView";
+            }
+            else
+            {
+                return "/communityHtml/boardNonuserView";
+            }
+        }
     }
 
     @GetMapping("/community/delete")

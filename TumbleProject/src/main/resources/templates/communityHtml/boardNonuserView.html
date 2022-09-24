@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 상세 페이지</title>
+  <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+</head>
+<body>
+
+<h1 th:text="${board.title}"></h1>
+<p th:text="${board.content}"></p>
+<a th:href="@{/community/(page=${currPage - 1})}">돌아가기</a>
+
+</body>
+</html>
