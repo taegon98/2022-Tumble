@@ -63,14 +63,14 @@
     var map = new kakao.maps.Map(container, options);
 
     var franArr = new Array();
-    franArr[0] = ["스타북스 경북대점", 35.892293, 128.608578, "대구 북구 대학로 75", "1234123123"]
-    franArr[1] = ["투썸 경북대점", 35.891871, 128.607719, "대구 대구", "1234123123"]
-    franArr[2] = ["이디아 경북대점", 35.892940, 128.608781, "대구 대구", "1234123123"]
+    franArr[0] = ["스타벅스 경북대점", 35.892293, 128.608578, "대구 북구 대학로 75", "17884722"]
+    franArr[1] = ["투썸 경북대점", 35.891871, 128.607719, "대구 북구 대학로 65", "27401180"]
+    franArr[2] = ["이디야커피 경북대점", 35.892940, 128.608781, "대구 북구 대학로17길 7", "22135250"]
 
     var persArr = new Array();
-    persArr[0] = ["더쪽 카페", 35.886187, 128.610264, "대구 북구 대현동 대현로19길 16", "12345134"]
-    persArr[1] = ["쏘울메이트 용산점", 35.861281, 128.521318, "대구 달서구 새방로 23-6", "0507-1380-6636"]
-    persArr[2] = ["쏘울메이트 평리점", 35.869455, 128.547714, "대구광역시 서구 국채보상로 151", "0507-1380-6636"]
+    persArr[0] = ["더쪽 카페", 35.886187, 128.610264, "대구 북구 대현동 대현로19길 16", "27446010"]
+    persArr[1] = ["쏘울메이트 용산점", 35.861281, 128.521318, "대구 달서구 새방로 23-6", "1975883212"]
+    persArr[2] = ["쏘울메이트 평리점", 35.869455, 128.547714, "대구광역시 서구 국채보상로 151", "1755123583"]
 
     var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';
         franchiseMarkers = [],
@@ -116,7 +116,7 @@
             image: markerImage,
             map:map
           });
-          contentStr = "<div class='customoverlay'><a href='https://map.kakao.com/link/map/"+ franArr[i][4] +"' target='_blank'><span class='title'>"+ franArr[i][0] +"</span></a></div>";
+          contentStr = "<div class='customoverlay'><a href='https://place.map.kakao.com/"+ franArr[i][4] +"' target='_blank'><span class='title'>"+ franArr[i][0] +"</span></a></div>";
 
           customOverlay = new kakao.maps.CustomOverlay({
             map: map,
@@ -165,7 +165,7 @@
             image: markerImage1,
             map:map
           });
-          contentStr1 = "<div class='customoverlay'><a href='https://map.kakao.com/link/map/"+ persArr[i][4] +"' target='_blank'><span class='title'>"+ persArr[i][0] +"</span></a></div>";
+          contentStr1 = "<div class='customoverlay'><a href='https://place.map.kakao.com/"+ persArr[i][4] +"' target='_blank'><span class='title'>"+ persArr[i][0] +"</span></a></div>";
 
           customOverlay1 = new kakao.maps.CustomOverlay({
             map: map,
