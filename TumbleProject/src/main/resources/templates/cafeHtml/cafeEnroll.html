@@ -8,6 +8,7 @@
 
 
 <body>
+<div th:replace="/fragments/header.html :: headerFragment"></div>
 <div class="layout">
     <form action="/cafe/enroll" th:action th:object="${cafe}" method="post" enctype="multipart/form-data">
         <div>

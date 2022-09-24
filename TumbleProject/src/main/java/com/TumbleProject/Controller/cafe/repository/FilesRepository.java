@@ -1,6 +1,6 @@
-package com.TumbleProject.cafe.repository;
+package com.TumbleProject.Controller.cafe.repository;
 
-import com.TumbleProject.cafe.domain.Files;
+import com.TumbleProject.Controller.cafe.domain.Files;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

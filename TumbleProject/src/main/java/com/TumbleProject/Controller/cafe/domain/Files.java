@@ -1,4 +1,4 @@
-package com.TumbleProject.cafe.domain;
+package com.TumbleProject.Controller.cafe.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

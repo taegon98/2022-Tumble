@@ -28,7 +28,7 @@ public class CommunityController {
 
 
     @GetMapping("/community")
-    public String communityHome(Model model,
+    public String communityHome(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model,
                                 @PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
                                 String searchKeyword)
     {
@@ -54,7 +54,7 @@ public class CommunityController {
 
         model.addAttribute("board",list);
         model.addAttribute("localDateTime", LocalDateTime.now());
-
+        model.addAttribute("loginMember",loginMember);
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
@@ -89,7 +89,7 @@ public class CommunityController {
     public String boardView(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,Model model,Integer id) {
         model.addAttribute("board",communityService.boardView(id));
         communityService.updateView(id);
-
+        model.addAttribute("loginMember",loginMember);
         int temp=communityService.currRePage();
         model.addAttribute("currPage",temp);
 
@@ -121,8 +121,10 @@ public class CommunityController {
     }
 
     @GetMapping("/community/modify/{id}")
-    public String boardModify(@PathVariable("id") Integer id,Model model)
+    public String boardModify(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+                              @PathVariable("id") Integer id,Model model)
     {
+        model.addAttribute("loginMember", loginMember);
         model.addAttribute("board",communityService.boardView(id));
         return "/communityHtml/boardmodify";
     }
