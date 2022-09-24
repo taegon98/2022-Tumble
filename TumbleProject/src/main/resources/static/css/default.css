@@ -75,11 +75,11 @@ a:hover{
     /* filter: grayscale(100%); */
 }
 
-.sub{
+body {
+    background: "background.png";
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.5
-    /* filter: grayscale(100%); */
 }
 
 .slogan{
