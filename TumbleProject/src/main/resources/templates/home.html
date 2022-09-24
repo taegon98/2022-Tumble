@@ -2,19 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <link th:href="@{/css/user.css}" href="../css/user.css" rel="stylesheet">
     <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
 </head>
 <body>
 <div>
     <div th:replace="/fragments/header.html :: headerFragment"></div>
-    <img src="/images/main.png" class="main">
     <!-- top image -->
     <div style="margin-top:30px;">
+        <img src="/images/main.png" class="main">
         <div class="slogan" style="text-align:center;">
-            <div style="margin-top:100px;"><h1 class="main-slogan"></h1>
-                <br><a class="a-hover-white"><h3>더 알아보기</h3></a>
-            </div>
+                <a class="a-hover-white"><h3>더 알아보기</h3></a>
         </div>
     </div>
     <!-- intro -->
@@ -24,18 +21,18 @@
         <div class="align">
             <div>
                 <img class="img-size" src="/images/cafe.png">
-                <div style="font-weight:bold;font-size:20px;"><a th:href="@{/cafe}">카페 소개</a></div>
-                <div>텀블러를 이용하면 혜택을 주는 카페를 소개해 드릴게요.</div>
+                <div style="margin-top:10px;margin-bottom:20px;font-weight:bold; font-size:20px;"><a class="a-black"th:href="@{/cafe}">카페 소개</a></div>
+                <div>텀블러를 이용하면 혜택을 주는 <br> 카페를 소개해 드릴게요.</div>
             </div>
             <div>
                 <img class="img-size" src="/images/comm.png">
-                <div style="font-weight:bold;font-size:20px;"><a th:href="@{/community}">커뮤니티</a></div>
-                <div>커뮤니티에서 다양한 의견을 공유하세요.</div>
+                <div style="margin-top:10px;margin-bottom:20px;font-weight:bold; font-size:20px;"><a class="a-black"th:href="@{/community}">커뮤니티</a></div>
+                <div>커뮤니티에서 다양한 의견을 <br>공유하세요.</div>
             </div>
             <div>
                 <img class="img-size" src="/images/camp.png">
-                <div style="font-weight:bold; font-size:20px;"><a th:href="@{/campaign}">캠페인 소개</a></div>
-                <div>다양한 에코 캠페인을 소개해드릴게요.</div>
+                <div style="margin-top:10px;margin-bottom:20px;font-weight:bold; font-size:20px;"><a class="a-black"th:href="@{/campaign}">캠페인 소개</a></div>
+                <div>다양한 에코 캠페인을 <br>소개해드릴게요.</div>
             </div>
         </div>
     </div>
