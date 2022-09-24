@@ -32,6 +32,8 @@ public class CommunityController {
                                 @PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
                                 String searchKeyword)
     {
+
+        System.out.println("CommunityController.communityHome");
         Page<Board> list = null;
         if(searchKeyword == null)
         {

@@ -72,8 +72,4 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/help")
-    public String help() {
-        return "signup/help";
-    }
 }
