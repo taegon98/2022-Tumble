@@ -7,25 +7,28 @@
     <link th:href="@{/css/footer.css}" href="../css/footer.css" rel="stylesheet">
 </head>
 <body>
-    <footer th:fragment="footerFragment" class="page-footer font-small teal pt-4">
-        <div class="container-fluid text-center text-md-left">
-            <div class="row">
-               <form th:action="@{/letter}" method="get">
-                   <input type="text">
-                   <button type="submit">트렌트 레터 구독</button>
-               </form>
-                <div class="footer-padding">
-                    <span class="footer-padding">FAQ</span>
-                    <span class="footer-padding">Contact Us</span>
-                    <span class="footer-padding">About Tumble</span>
-                </div>
-                <div>
-                    <span>FAQ</span>
-                    <span>Contact Us</span>
-                    <span>About Tumble</span>
-                </div>
+<!-- footer -->
+<footer th:fragment="footerFragment" style="height:200px;background-color:#f5f5f5;color:rgb(2, 75, 2); left:0px;right:0px;bottom:0px;text-align:center;">
+    <div>
+        <form style="margin-bottom:20px;margin-top:20px;" th:action="@{/letter}" method="get">
+            <input class="trand-input"style="margin-top:20px;"type="text" placeholder="put your email">
+            <button class="trand-btn"style="margin-top:20px;"type="submit">뉴스레터 구독</button>
+        </form>
+        <div class="sort-three">
+            <div style="margin-left:50px;">
+                <div style="font-weight:bold;margin-bottom:10px">Contact Us</div>
+                <div>phone : 010-5702-2378<br>email : taegon1998@gmail.com</div>
+            </div>
+            <div style="margin-left:50px;text-align:center;font-weight:bold;">
+                <div>Bring Your Own</div>
+                <div>Tumble</div>
+            </div>
+            <div style="margin-left:50px;">
+                <div style="font-weight:bold;margin-bottom:10px">About Tumble</div>
+                <div>텀블러를 통해 탄소중립을<br>실천하는 카페들을 소개하는 서비스</div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 </body>
 </html>

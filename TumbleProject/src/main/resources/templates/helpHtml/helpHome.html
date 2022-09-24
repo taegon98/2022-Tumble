@@ -18,14 +18,14 @@
       <button class="search-btn" type="submit">검색</button>
     </form>
 
-    <div class="help-container" th:each="board : ${board}">
-      <a th:href="@{/help/view(id=${board.id})}"><span class="help-title" th:text="${board.title}"></span></a>
+    <div class="community-container" th:each="board : ${board}">
+      <a class="a-hover"th:href="@{/help/view(id=${board.id})}"><span class="help-title" th:text="${board.title}"></span></a>
       <span class="help-extra">작성일자 - <span th:text="${board.writeDate}"></span></span>
     </div>
 
     <div>
       <!-- paging -->
-      <button type="submit"><a th:href="@{/help(page = ${prePage - 1})}"> < </a></button>
+      <button class="paging-btn" type="submit"><a class="a-hover"th:href="@{/help(page = ${prePage - 1})}"> < </a></button>
       <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
         <a th:if="${page != nowPage}"
            th:href=
@@ -33,11 +33,11 @@
            th:text="${page}"></a>
         <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
       </th:block>
-      <button type="submit"><a th:href="@{/help(page = ${nowPage})}"> > </a></button>
+      <button class="paging-btn" type="submit"><a class="a-hover"th:href="@{/help(page = ${nowPage})}"> > </a></button>
     </div>
 
     <div>
-      <button type="submit" class="gray-btn"><a href="/help/enroll">글 작성하기</a></button>
+      <button type="submit" class="gray-btn"><a class="a-hover" href="/help/enroll">글 작성하기</a></button>
     </div>
   </div>
 </div>

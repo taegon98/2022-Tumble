@@ -37,7 +37,7 @@ a:hover{
 
 .logo-img{
     display: flex;
-    width: 140px;
+    width: 160px;
     margin-bottom: 0px;
 }
 
@@ -50,7 +50,6 @@ a:hover{
     color: black;
     text-decoration: none;
     font-size: 18px;
-
 }
 
 .for-user {
@@ -71,10 +70,15 @@ a:hover{
 }
 
 .main{
-    background-image: url("/static/images/main.png");
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top:40px;
+    /* filter: grayscale(100%); */
+}
+
+.sub{
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5
     /* filter: grayscale(100%); */
 }
 
@@ -107,6 +111,12 @@ a:hover{
     color: white;
     font-weight: bold;
     margin-top: 0px;
+    text-decoration: none;
+}
+
+.a-black {
+    color:black;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -151,4 +161,24 @@ a:hover{
 .sort-two {
     display: flex;
     margin-top: 10px;
+}
+
+.sort-three {
+    display: flex;
+    justify-content: center;
+}
+
+.trand-btn {
+    border-radius: 5px;
+    background-color: white;
+    color: #969696;
+    border-color: #d6d6d6;
+    height: 30px;
+}
+
+.trand-input {
+    border-radius: 5px;
+    width:40%;
+    height: 25px;
+    border-color: #d6d6d6;
 }

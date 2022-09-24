@@ -6,58 +6,76 @@
     <link th:href="@{/css/user.css}" href="../css/user.css" rel="stylesheet">
     <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
 </head>
-<b1ody>
+<body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
-<h1>캠페인 소개</h1>
+<h1 class="title">캠페인 소개</h1>
+<div class="go-center" style="margin-bottom:50px;">
+    <div>
+        <h2>
+            <br>아직도 커피를 일회용 용기에 테이크아웃하는 당신!
+            <br><span style="font-style:italic;">TUMBLE</span> 과 함께 탄소중립으로 지구를 구해봅시다.
+        </h2>
+        <div style="display:flex">
+            <div>
+                <img src="/images/First-photo.jpg" alt="사진이 안떠" width="250" height="250">
+            </div>
+            <div style="margin-left:30px;">
+                <p style="font-size:13px;">20202년 9월 23일</p>
+                <div style="font-size:19px;">
+                    하루에 발생하는 폐기물 약 53만톤,이제는 환경을 생각할 때 입니다.<br>
+                    Tumble 은 경북대 학생들이 모여 만든 탄소 중립 홈페이지 입니다.<br>
+                    본 사이트는 자신의 텀블러를 들고가세요’ 라는 뜻인 <br>
+                    ‘Bring your own,Tumble’ 이라는 슬로건 아래, <br>
+                    캠페인 소개 홈페이지로 기획되었습니다.
+                </div>
+            </div>
+        </div>
 
-<hr>
-<h2>
-    <br>아직도 커피를 일회용 용기에 테이크아웃하는 당신!
-    <br>TUMBLE과 함께 탄소중립으로 지구를 구해봅시다.
+        <hr>
+        <h2>
+            <br>Tumble 은 어떤 캠페인 인가요??
 
-</h2>
-<p>2022년 9월 23일</p>
-<p>
-    <img src="/images/First-photo.jpg" alt="사진이 안떠" width="250" height="250">
-    <pre>
-    하루에 발생하는 폐기물 약 53만톤,이제는 환경을 생각할 때 입니다.
-    Tumble 은 경북대 학생들이 모여 만든 탄소 중립 홈페이지 입니다.
-    본 사이트는 자신의 텀블러를 들고가세요’ 라는 뜻인 ‘Bring your own,Tumble’ 이라는 슬로건 아래, 캠페인 소개 홈페이지로 기획되었습니다.
-</pre>
-</p>
+        </h2>
+        <div style="display:flex">
+            <div style="margin-left:30px;">
+                <p style="font-size:13px;">2020년 11월 5일</p>
+                <div style="font-size:19px;">
+                    하루에 발생하는 폐기물 약 53만톤,이제는 환경을 생각할 때 입니다.<br>
+                    Tumble 은 경북대 학생들이 모여 만든 탄소 중립 홈페이지 입니다.<br>
+                    본 사이트는 자신의 텀블러를 들고가세요’ 라는 뜻인 <br>
+                    ‘Bring your own,Tumble’ 이라는 슬로건 아래, <br>
+                    캠페인 소개 홈페이지로 기획되었습니다.
+                </div>
+            </div>
+            <div >
+                <img src="/images/Second-photo.jpeg" alt="사진이 안떠" width="250" height="250">
+            </div>
+        </div>
+        <hr>
+        <h2>
+            <br>탄소 중립은 무엇인가요??
 
-<hr>
-<h2>
-    <br>Tumble 은 어떤 캠페인 인가요??
+        </h2>
+        <div style="display:flex">
+            <div>
+                <img src="/images/Third-photo.jpg" alt="사진이 안떠" width="250" height="250">
+            </div>
+            <div style="margin-left:30px;">
+                <p style="font-size:13px;">2020년 11월 5일</p>
+                <div style="font-size:19px;">
+                    대기 중 이산화탄소 농도 증가를 막기 위해 인간 활동에 의한 배출량은 최대한 감소시키고,<br>
+                    흡수량은 증대하여 순 배출량이 ‘0’이 된 상태 입니다<br>
+                    인간 활동으로 배출하는 온실가스(+요인)는 최대한 줄이고,<br>
+                    배출되는 온실가스는 산림 흡수나 CCUS로 제거(-요인)하여<br>
+                    실질적인 배출량을 ‘0’수준으로 낮추는 것을 탄소중립이라고 합니다.
 
-</h2>
-<p>2020년 11월 5일</p>
-<p>
-    <img src="/images/Second-photo.jpeg" alt="사진이 안떠" width="250" height="250">
-    <pre>
-    하루에 발생하는 폐기물 약 53만톤,이제는 환경을 생각할 때 입니다.
-    Tumble 은 경북대 학생들이 모여 만든 탄소 중립 홈페이지 입니다.
-    본 사이트는 자신의 텀블러를 들고가세요’ 라는 뜻인 ‘Bring your own,Tumble’ 이라는 슬로건 아래, 캠페인 소개 홈페이지로 기획되었습니다.
-</pre>
-</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <hr>
-    <h2>
-        <br>탄소 중립은 무엇인가요??
+</div>
 
-    </h2>
-    <p>2020년 11월 5일</p>
-    <p>
-        <img src="/images/Third-photo.jpg" alt="사진이 안떠" width="250" height="250">
-        <pre>
-    대기 중 이산화탄소 농도 증가를 막기 위해 인간 활동에 의한 배출량은 최대한 감소시키고,
-    흡수량은 증대하여 순 배출량이 ‘0’이 된 상태 입니다
-    인간 활동으로 배출하는 온실가스(+요인)는 최대한 줄이고,
-    배출되는 온실가스는 산림 흡수나 CCUS로 제거(-요인)하여
-    실질적인 배출량을 ‘0’수준으로 낮추는 것을 탄소중립이라고 합니다.
-
-</pre>
-    </p>
-
-</b1ody>
+<div th:replace="/fragments/footer.html :: footerFragment"></div>
+</body>
 </html>
