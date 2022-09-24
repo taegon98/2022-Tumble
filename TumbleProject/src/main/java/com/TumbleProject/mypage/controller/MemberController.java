@@ -72,4 +72,12 @@ public class MemberController {
         return "redirect:/";
     }
 
+    @GetMapping("/letter")
+    public String letter(Model model) {
+        model.addAttribute("message","구독신청이 완료되었습니다.");
+        model.addAttribute("searchUrl","/");
+
+        return "message";
+    }
+
 }

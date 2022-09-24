@@ -1,8 +1,7 @@
-package com.TumbleProject.cafe.service;
+package com.TumbleProject.Controller.cafe.service;
 
-import com.TumbleProject.cafe.domain.Cafe;
-import com.TumbleProject.cafe.domain.Files;
-import com.TumbleProject.cafe.repository.FilesRepository;
+import com.TumbleProject.Controller.cafe.domain.Files;
+import com.TumbleProject.Controller.cafe.repository.FilesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

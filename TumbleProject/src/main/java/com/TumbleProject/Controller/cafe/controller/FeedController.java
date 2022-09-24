@@ -1,9 +1,11 @@
-package com.TumbleProject.cafe.controller;
+package com.TumbleProject.Controller.cafe.controller;
 
-import com.TumbleProject.cafe.domain.Cafe;
-import com.TumbleProject.cafe.domain.Files;
-import com.TumbleProject.cafe.service.CafeService;
-import com.TumbleProject.cafe.service.FileService;
+import com.TumbleProject.Controller.cafe.domain.Cafe;
+import com.TumbleProject.Controller.cafe.domain.Files;
+import com.TumbleProject.Controller.cafe.service.CafeService;
+import com.TumbleProject.Controller.cafe.service.FileService;
+import com.TumbleProject.mypage.domain.Member;
+import com.TumbleProject.mypage.domain.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 
@@ -31,14 +33,17 @@ public class FeedController {
         return "cafeHtml/cafeMap";
     }
     @GetMapping("/cafe/enroll")
-    public String cafeEnroll(Model model) {
+    public String cafeEnroll(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
         model.addAttribute("cafe", new Cafe());
+        model.addAttribute("loginMember",loginMember);
         return "cafeHtml/cafeEnroll";
     }
 
     @PostMapping(value = "/cafe/enroll")
-    public String create(@Valid Cafe cafeform, @RequestPart MultipartFile files, BindingResult bindingResult, Model model) throws IOException {
+    public String create(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+                         @Valid Cafe cafeform, @RequestPart MultipartFile files, BindingResult bindingResult, Model model) throws IOException {
         model.addAttribute("cafe", cafeform);
+        model.addAttribute("loginMember",loginMember);
         if (bindingResult.hasErrors()) {
             return "/cafeHtml/cafeEnroll";
         }
@@ -79,8 +84,9 @@ public class FeedController {
     }
 
     @GetMapping(value = "/cafe")
-    public String list(Model model) {
+    public String list(Model model, @SessionAttribute(name= SessionConst.LOGIN_MEMBER, required = false) Member loginMember) {
         List<Cafe> cafes = cafeService.findCafes();
+        model.addAttribute("loginMember",loginMember);
         model.addAttribute("cafes", cafes);
         List<Files> file = fileService.findFiles();
         model.addAttribute("file", file);

@@ -8,6 +8,7 @@
     <title>글 수정</title>
 </head>
 <body>
+<div th:replace="/fragments/header.html :: headerFragment"></div>
 <h2 class="title">카페 정보 수정</h2>
 <div class="go-center">
     <form th:action="@{/cafe/modify/{id}(id = ${cafe.id})}" method="post" class="cafe-container" style="width: 80%;">

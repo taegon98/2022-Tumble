@@ -27,7 +27,8 @@ public class HomeController {
     }
 
     @GetMapping("/campaign")
-    public String campaign() {
+    public String campaign(@SessionAttribute(name= SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+        model.addAttribute("loginMember",loginMember);
         return "campaign/campaignHome";
     }
 

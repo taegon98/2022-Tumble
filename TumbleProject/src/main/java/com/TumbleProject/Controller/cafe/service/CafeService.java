@@ -1,15 +1,12 @@
-package com.TumbleProject.cafe.service;
+package com.TumbleProject.Controller.cafe.service;
 
-import com.TumbleProject.cafe.domain.Cafe;
-import com.TumbleProject.cafe.repository.CafeRepository;
-import com.TumbleProject.community.entity.Board;
+import com.TumbleProject.Controller.cafe.domain.Cafe;
+import com.TumbleProject.Controller.cafe.repository.CafeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
