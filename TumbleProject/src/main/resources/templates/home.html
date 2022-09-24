@@ -8,11 +8,12 @@
 <body>
 <div>
     <div th:replace="/fragments/header.html :: headerFragment"></div>
+    <img src="/images/main.png" class="main">
     <!-- top image -->
     <div class="main" style="margin-top:30px;height:700px;">
         <div class="slogan" style="text-align:center;">
             <div style="margin-top:100px;"><h1 class="main-slogan"></h1>
-                <br><a class="a-hover-white"><h3 style="margin-top:300px;">더 알아보기</h3></a>
+                <br><a class="a-hover-white"><h3>더 알아보기</h3></a>
             </div>
         </div>
     </div>
@@ -46,30 +47,30 @@
     <div class="sort-two">
         <div style="text-align:center;width:50%;">
             <div style="font-size:20px;margin-top:100px;">환경을 생각하는 카페를<br>보러가봐요!</div>
-            <button class="default-btn"><a class="a-hover-white" href="">카페보러가기</a></button>
+            <button class="default-btn"><a th:href="@{/cafe}" class="a-hover-white">카페보러가기</a></button>
         </div>
         <div>
-            <img class="intro-img-size" src="tumb.png">
+            <img class="intro-img-size" src="/images/tumb.png">
         </div>
     </div>
     <!-- introduce - community -->
     <div class="sort-two">
         <div>
-            <img class="intro-img-size" src="commu.png">
+            <img class="intro-img-size" src="/images/commu.png">
         </div>
         <div style="text-align:center;width:50%;">
             <div style="font-size:20px;margin-top:100px;">TUMBLE과 함께 환경을 위한<br>다양한 실천 방안과<br>후기를 공유해봐요!</div>
-            <button class="default-btn"><a class="a-hover-white" href="">소통하러가기</a></button>
+            <button class="default-btn"><a th:href="@{/community} "class="a-hover-white" href="">소통하러가기</a></button>
         </div>
     </div>
     <!-- introduce - campaign -->
     <div class="sort-two">
         <div style="text-align:center;width:50%;">
             <div style="font-size:20px;margin-top:100px;">더 많은 실천을 원하는 사람들을 위한<br>캠페인도 소개해드려요!</div>
-            <button class="default-btn"><a class="a-hover-white">캠페인보러가기</a></button>
+            <button class="default-btn"><a th:href="@{/campaign}" class="a-hover-white">캠페인보러가기</a></button>
         </div>
         <div>
-            <img class="intro-img-size" src="campa.png">
+            <img class="intro-img-size" src="/images/campa.png">
         </div>
     </div>
     <div th:replace="/fragments/footer.html :: footerFragment"></div>
