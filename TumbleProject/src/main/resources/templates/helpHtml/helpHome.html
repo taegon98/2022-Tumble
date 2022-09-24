@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tumble</title>
+  <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+  <link th:href="@{/css/community.css}" href="../css/community.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="/fragments/header.html :: headerFragment"></div>
+<h1 class="title">고객센터</h1>
+<div class="go-center">
+  <div style="width:80%;">
+
+    <!-- search -->
+    <form style="margin-top:20px;">
+      <input class="search-input" type="text" name="searchKeyword" placeholder="제목을 입력하세요">
+      <button class="search-btn" type="submit">검색</button>
+    </form>
+
+    <div class="help-container" th:each="board : ${board}">
+      <a th:href="@{/help/view(id=${board.id})}"><span class="help-title" th:text="${board.title}"></span></a>
+      <span class="help-extra">작성일자 - <span th:text="${board.writeDate}"></span></span>
+    </div>
+
+    <div>
+      <!-- paging -->
+      <button type="submit"><a th:href="@{/help(page = ${prePage - 1})}"> < </a></button>
+      <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+        <a th:if="${page != nowPage}"
+           th:href=
+                   "@{/help(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
+           th:text="${page}"></a>
+        <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+      </th:block>
+      <button type="submit"><a th:href="@{/help(page = ${nowPage})}"> > </a></button>
+    </div>
+
+    <div>
+      <button type="submit" class="gray-btn"><a href="/help/enroll">글 작성하기</a></button>
+    </div>
+  </div>
+</div>
+
+<div th:replace="/fragments/footer.html :: footerFragment"></div>
+</body>
+</html>

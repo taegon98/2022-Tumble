@@ -1,5 +1,6 @@
 package com.TumbleProject.mypage.service;
 
+import com.TumbleProject.mypage.domain.Grade;
 import com.TumbleProject.mypage.domain.Member;
 import com.TumbleProject.mypage.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class MemberService {
 
     public Long save(Member member) {
         memberRepository.save(member);
+        member.setGrade(Grade.BASIC);
         return member.getId();
     }
 
