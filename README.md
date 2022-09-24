@@ -29,6 +29,6 @@
 - Front-End : JavaScript, Thymeleaf, Bootstrap
 - Back-End : Spring Boot, Jpa, MariaDB on Amazon RDS
 - ETC : Kakao 지도 Web API
-> > Spring Boot :
+> Spring Boot :
 ----------
 ### 시연 영상
