@@ -29,7 +29,6 @@ textarea::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 .cafe-btn {
@@ -49,7 +48,7 @@ textarea::placeholder {
     margin-top: 20px;
     margin-right: 40px;
     float: right;
-    border-radius: 2px;
+    border-radius: 10px;
     margin-bottom: 50px;
 }
 
