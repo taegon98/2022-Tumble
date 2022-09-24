@@ -38,7 +38,7 @@ Tumble 사용자들의 카페방문후기 및 편하게 이야기 나눌수 있�
 - Back-End : Spring Boot, Jpa, MariaDB on Amazon RDS
 - ETC : Kakao 지도 Web API
 
-> > **Spring Boot**
+> > - **Spring Boot**
 > > > > 1. Http Session세션을 사용해서 로그인에 성공하면 session 속성에 유저 정보를 저장할 수 있습니다.
 > > > > 2. 웹 브라우저를 완전히 종료하기전까지 session객체 정보를 사용해 로그인상태를 계속해서 유지할 수 있습니다.
 > > > > 3. session.invalidate() 메서드를 통해 로그아웃 처리를 할 수 있습니다.
@@ -46,13 +46,13 @@ Tumble 사용자들의 카페방문후기 및 편하게 이야기 나눌수 있�
 > > > > 5. 조회수 기능 - Entity 내의 Board 클래스안에 viewCount 의 변수를 만들어 각 Board 객체의 viewCount 를 DB와 연동되어 조회시에 Count+1 이 됩니다
 
 
-> > **Jpa**
+> > - **Jpa**
 > > > > 1. 검색 기능 - JPA 기본제공 함수인 FindBy 함수를 사용해 FindBy(Title)Containing 함수를 통해 제목 검색 기능을 구현했습니다. 
 > > > >  ex ) “가나다” 에 가나다를 검색해야 나오는것이 아닌 중간글자인 “나”를 검색하게 되면 “나”가 포홤된 모든 글들의 검색결과가 나오게 됩니다.
 > > > > 2. 글 작성 기능 - JPA 기본제공 함수인 Save 함수를 사용하여 글 작성 기능을 구현하였습니다. 글을 작성하게 되면 사용자 ID, 글 작성일자가 Setting 되어 작성되게 됩니다.
 > > > > 3. 글 삭제 기능 - JPA 기본제공함수인 DeleteById 를 사용하여 글 삭제 기능을 구현하였습니다. 글 번호에 따라 글이 삭제 되게 구현하였습니다.
 
-> > **Kakao 지도 Web API**
+> > - **Kakao 지도 Web API**
 > > > > 1. 석환
 
 ----------
