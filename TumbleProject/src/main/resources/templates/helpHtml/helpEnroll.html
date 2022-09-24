@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <link th:href="@{/css/enroll.css}" href="../css/enroll.css" rel="stylesheet">
+  <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+  <title>글 작성</title>
+</head>
+<body>
+<div th:replace="/fragments/header.html :: headerFragment"></div>
+<h2 class="title">글작성</h2>
+<div class="go-center">
+  <form action="/help/write" method="post" class="cafe-container" style="width: 80%;">
+    <!-- title -->
+    <div class="info-container">
+      <textarea cols="50" name="title" type="text" autofocus required wrap="hard" placeholder="제목"></textarea>
+    </div>
+    <!-- content -->
+    <div class="info-container">
+      <textarea cols="50" rows="20" name="content" autofocus required wrap="hard" placeholder="공유하고 싶은 내용을 자유롭게 적어주세요."></textarea>
+    </div>
+    <button type="submit" class="cafe-btn">작성완료</button>
+  </form>
+  <div class="layout">
+    <form action="/help">
+      <button>돌아가기</button>
+    </form>
+  </div>
+</div>
+<div th:replace="/fragments/footer :: footerFragment"></div>
+</body>
+</html>
