@@ -1,0 +1,43 @@
+.view-title {
+    margin-top: 50px;
+    margin-left: 70px;
+    font-size: 30px;
+}
+
+.view-detail {
+    float: right;
+    margin-right: 110px;
+    margin-bottom: 10px;
+}
+
+.view-content {
+    margin-top: 50px;
+    margin-left: 80px;
+    height: 100px;
+    width: 85%;
+    border: 1px solid #969696;
+    border-radius: 10px;
+    overflow: flex;
+}
+
+.view-btn {
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.btn-view {
+    font-size: 14px;
+    background-color: white;
+    color: #969696;
+    border-color: #d6d6d6;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.a-hover {
+    text-decoration: none;
+    color: black;
+}
