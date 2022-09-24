@@ -71,6 +71,12 @@ a:hover{
 }
 
 .main{
+    background-image: url("static/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main{
     background-image: url("/static/images/main.png");
     background-repeat: no-repeat;
     background-size: cover;
