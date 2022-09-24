@@ -4,59 +4,40 @@
   <meta charset="UTF-8">
   <title>Tumble</title>
   <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+  <link th:href="@{/css/community.css}" href="../css/community.css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
-<li>
-  <button type="submit"><a href="/community/enroll"> 글 작성 </a></button>
-  <button type="submit"><a href="/"> 돌아가기 </a></button>
-</li>
-
-<h2>글 목록</h2>
-<div class="layout">
-  <table>
-    <thead>
-    <tr>
-      <th>글번호</th>
-      <th>제목</th>
-      <th>작성자</th>
-      <th>작성일자</th>
-      <th>조회수</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr th:each="board : ${board}">
-        <td th:text="${board.id}">1</td>
-        <td>
-          <a th:text="${board.title}" th:href="@{/community/view(id=${board.id})}"></a>
-        </td>
-      <td th:text="${board.writer}"></td>
-      <td th:text="${board.writeDate}"></td>
-      <td th:text="${board.countVisit}"></td>
-
-    </tr>
-
-    </tbody>
-  </table>
-  <button type="submit"><a th:href="@{/community(page = ${prePage - 1})}"> 이전 페이지 </a></button>
-  <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-    <a th:if="${page != nowPage}"
-       th:href=
-    "@{/community(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
-    th:text="${page}"></a>
-    <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
-  </th:block>
-  <button type="submit"><a th:href="@{/community(page = ${nowPage})}"> 다음 페이지 </a></button>
-
-  <form th:action="@{/community}" method="get">
-
-    <input type="text" name="searchKeyword">
-    <button type="submit">검색</button>
-  </form>
-
-
+<h1 class="title">커뮤니티</h1>
+<div class="go-center">
+  <div style="width:80%;">
+    <div class="community-container" th:each="board : ${board}">
+      <a th:href="@{/community/view(id=${board.id})}"><span class="community-title" th:text="${board.title}"></span></a>
+      <span class="community-extra">작성자 - <span th:text="${board.writer}"></span> | 작성일자 - <span th:text="${board.writeDate}"></span> | 조회수 - <span th:text="${board.countVisit}"></span></span>
+    </div>
+    <div>
+      <!-- paging -->
+      <button type="submit"><a th:href="@{/community(page = ${prePage - 1})}"> < </a></button>
+      <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+        <a th:if="${page != nowPage}"
+           th:href=
+                   "@{/community(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
+           th:text="${page}"></a>
+        <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+      </th:block>
+      <button type="submit"><a th:href="@{/community(page = ${nowPage})}"> > </a></button>
+      <!-- search -->
+      <form style="margin-top:20px;">
+        <input class="search-input" type="text" name="searchKeyword" placeholder="제목을 입력하세요">
+        <button class="search-btn" type="submit">검색</button>
+      </form>
+    </div>
+    <div>
+      <button type="submit" class="gray-btn"><a href="/community/enroll">글 작성하기</a></button>
+    </div>
+  </div>
 </div>
+
 <div th:replace="/fragments/footer.html :: footerFragment"></div>
 </body>
 </html>
