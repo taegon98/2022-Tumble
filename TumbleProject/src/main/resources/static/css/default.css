@@ -50,7 +50,6 @@ a:hover{
     color: black;
     text-decoration: none;
     font-size: 18px;
-
 }
 
 .for-user {
@@ -71,7 +70,7 @@ a:hover{
 }
 
 .main{
-    background-image: url("/static/images/main.png");
+    background-image: url("/css/main.png");
     background-repeat: no-repeat;
     background-size: cover;
     /* filter: grayscale(100%); */
@@ -106,6 +105,7 @@ a:hover{
     color: white;
     font-weight: bold;
     margin-top: 0px;
+    text-decoration: none;
 }
 
 .img-size {
@@ -121,4 +121,32 @@ a:hover{
 
 .align {
     display: flex;
+    justify-content: center;
+}
+
+.default-btn {
+    background-color: #5CC685;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    border: none;
+    cursor: pointer;
+    color:rgb(255, 255, 255);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.intro-img-size {
+    width: 700px;
+    height: 400px;
+}
+
+.sort-two {
+    display: flex;
+    margin-top: 10px;
 }

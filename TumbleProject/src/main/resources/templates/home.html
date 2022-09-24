@@ -22,28 +22,56 @@
         <h2 class="introd">Introduction</h2>
         <div class="align">
             <div>
-                <img class="img-size" src="/images/cafe.png">
-                <div style="font-weight:bold;font-size:20px;">카페소개</div>
-                <div>텀블러를 이용하면 혜택을 주는 카페를 소개해 드릴게요.</div>
+                <img class="img-size" src="./cafe.png">
+                <div style="margin-top:10px;margin-bottom:20px;font-weight:bold;font-size:20px;">카페소개</div>
+                <div>텀블러를 이용하면 혜택을 주는<br>카페를 소개해 드릴게요.</div>
             </div>
             <div>
-                <img class="img-size" src="/images/comm.png">
-                <div style="font-weight:bold;font-size:20px;">커뮤니티</div>
-                <div>커뮤니티에서 다양한 의견을 공유하세요.</div>
+                <img class="img-size" src="./comm.png">
+                <div style="margin-top:10px;margin-bottom:20px;font-weight:bold;font-size:20px;">커뮤니티</div>
+                <div>커뮤니티에서 다양한 의견을<br>공유하세요.</div>
             </div>
             <div>
-                <img class="img-size" src="/images/camp.png">
-                <div style="font-weight:bold; font-size:20px;">캠페인</div>
-                <div>다양한 에코 캠페인을 소개해드릴게요.</div>
+                <img class="img-size" src="./camp.png">
+                <div style="margin-top:10px;margin-bottom:20px;font-weight:bold; font-size:20px;">캠페인</div>
+                <div>다양한 에코 캠페인을<br>소개해드릴게요.</div>
             </div>
         </div>
     </div>
-    <hr>
+    <hr style="margin-top:30px; margin-bottom:40px;">
+    <div style="margin-top:30px; margin-bottom:40px;text-align:center;font-size:20px;">
+        하루에 발생하는 폐기물 약 53만톤,<br>이제는<span style="color:#5CC685;font-weight:bold;">   환경을 생각할 때</span>!
+    </div>
     <!-- introduce - cafe -->
-
+    <div class="sort-two">
+        <div style="text-align:center;width:50%;">
+            <div style="font-size:20px;margin-top:100px;">환경을 생각하는 카페를<br>보러가봐요!</div>
+            <button class="default-btn"><a class="a-hover-white" href="">카페보러가기</a></button>
+        </div>
+        <div>
+            <img class="intro-img-size" src="tumb.png">
+        </div>
+    </div>
     <!-- introduce - community -->
-
+    <div class="sort-two">
+        <div>
+            <img class="intro-img-size" src="commu.png">
+        </div>
+        <div style="text-align:center;width:50%;">
+            <div style="font-size:20px;margin-top:100px;">TUMBLE과 함께 환경을 위한<br>다양한 실천 방안과<br>후기를 공유해봐요!</div>
+            <button class="default-btn"><a class="a-hover-white" href="">소통하러가기</a></button>
+        </div>
+    </div>
     <!-- introduce - campaign -->
+    <div class="sort-two">
+        <div style="text-align:center;width:50%;">
+            <div style="font-size:20px;margin-top:100px;">더 많은 실천을 원하는 사람들을 위한<br>캠페인도 소개해드려요!</div>
+            <button class="default-btn"><a class="a-hover-white">캠페인보러가기</a></button>
+        </div>
+        <div>
+            <img class="intro-img-size" src="campa.png">
+        </div>
+    </div>
     <div th:replace="/fragments/footer.html :: footerFragment"></div>
 </div>
 </body>
