@@ -72,15 +72,8 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/mypage")
-    public String myPage(@SessionAttribute(value = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
-        model.addAttribute("message","로그인이 필요합니다.");
-        model.addAttribute("searchUrl","/login");
-        model.addAttribute("member", loginMember);
-
-        if (loginMember == null) {
-            return "message";
-        }
-        return "signup/myPage";
+    @GetMapping("/help")
+    public String help() {
+        return "signup/help";
     }
 }
