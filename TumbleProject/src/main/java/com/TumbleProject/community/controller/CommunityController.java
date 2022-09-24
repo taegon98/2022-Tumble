@@ -92,7 +92,6 @@ public class CommunityController {
         int temp=communityService.currRePage();
         model.addAttribute("currPage",temp);
 
-        System.out.println("loginMember = " + loginMember.getGrade());
 
         if(loginMember==null)
         {

@@ -19,7 +19,6 @@ public class MemberService {
 
     public Long save(Member member) {
         memberRepository.save(member);
-        member.setGrade(Grade.BASIC);
         return member.getId();
     }
 

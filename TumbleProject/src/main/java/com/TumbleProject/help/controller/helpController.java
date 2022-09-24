@@ -60,12 +60,23 @@ public class helpController {
 
     @GetMapping("/help/enroll")
     public String createForm(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,Model model) {
+        model.addAttribute("message", "로그인이 필요합니다.");
+        model.addAttribute("searchUrl", "/login");
         model.addAttribute("loginMember",loginMember);
-        return "helpHtml/helpEnroll";
+
+        if(loginMember==null) {
+            return "message";
+        }
+        else {
+            return "helpHtml/helpEnroll";
+        }
     }
 
     @PostMapping("/help/write")
-    public String boardWrite(helpBoard board,Model model) {
+    public String boardWrite(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,helpBoard board,Model model) {
+        model.addAttribute("message","글 작성이 완료되었습니다.");
+        model.addAttribute("searchUrl","/help");
+
         helpService.write(board);
         return "redirect:/help";
     }
@@ -73,13 +84,14 @@ public class helpController {
     @GetMapping("/help/view")
     public String boardView(@SessionAttribute(name= SessionConst.LOGIN_MEMBER, required = false) Member loginMember,Model model,Integer id) {
         model.addAttribute("board",helpService.boardView(id));
-        System.out.println("loginMember = " + loginMember.getGrade());
+        model.addAttribute("loginMember",loginMember);
+
         if(loginMember==null)
         {
             return "/helpHtml/helpNonView";
         }
         else{
-            if(loginMember.getGrade()==Grade.VIP)
+            if(loginMember.getUserId().equals("hys339631"))
             {
                 return "/helpHtml/helpView";
             }
@@ -90,10 +102,12 @@ public class helpController {
     }
 
     @GetMapping("/help/delete")
-    public String boardDelete(Integer id) {
+    public String boardDelete(Integer id,Model model) {
         helpService.boardDelete(id);
 
-        return "redirect:/help/";
+        model.addAttribute("message","글이 삭제되었습니다.");
+        model.addAttribute("searchUrl","/help");
+        return "redirect:/help";
     }
 
     @GetMapping("/help/modify/{id}")
