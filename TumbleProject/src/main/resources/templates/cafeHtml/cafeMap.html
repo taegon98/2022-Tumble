@@ -4,12 +4,54 @@
 <head>
   <meta charset="utf-8"/>
   <title>지도</title>
-  <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+<!--  <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">-->
+  <style>
+    #mapwrap{position:relative;overflow:hidden;}
+    .category, .category *{margin:0;padding:0;color:#000;}
+    .category {position:absolute;overflow:hidden;top:10px;left:10px;width:100px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:10px;text-align:center;background-color:#fff;}
+    .category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;}
+    .category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;}
+    .category .ico_comm {display:block;margin:0 auto 2px;width:22px;height:26px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png') no-repeat;}
+    .category .ico_coffee {background-position:-10px 0;}
+    .customoverlay {position:relative;bottom:50px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+    .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+    .customoverlay a {display:block;text-decoration:none;color:#111;text-align:center;border-radius:6px;font-size:14px;font-weight:500;overflow:hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+    .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:500;}
+    .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .custom_typecontrol {position:absolute;top:10px;right:10px;overflow:hidden;width:130px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
+    .custom_typecontrol span {display:block;width:65px;height:30px;float:left;text-align:center;line-height:30px;cursor:pointer;}
+    .custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}
+    .custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
+    .custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}
+    .custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+    .custom_typecontrol .selected_btn:hover {color:#fff;}
+  </style>
 </head>
 <body>
+<div id="mapwrap">
+  <!-- 지도가 표시될 div -->
+  <div class="custom_typecontrol radius_border">
+    <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+    <span id="btnSkyview" class="btn" onclick="setMapType('skyview')">스카이뷰</span>
+  </div>
+  <div id="map" style="width:1500px;height:1000px;"></div>
+  <!-- 지도 위에 표시될 마커 카테고리 -->
+  <div class="category">
+    <ul>
+      <li id="franchise" onclick="changeMarker('franchise')">
+        <span class="ico_comm ico_coffee"></span>
+        프랜차이즈
+      </li>
+      <li id="personal" onclick="changeMarker('personal')">
+        <span class="ico_comm ico_coffee"></span>
+        개인카페
+      </li>
+    </ul>
+  </div>
+</div>
 
 <form action="/cafe/map" method="get">
-  <div id="map" style="width:100%;height:1000px;"></div>
+<!--  <div id="map" style="width:100%;height:1000px;"></div>-->
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbe5fe03e378ca4cf812cc7af13d845a"></script>
   <script>
     var container = document.getElementById('map'),
@@ -20,56 +62,125 @@
 
     var map = new kakao.maps.Map(container, options);
 
-    var positions = [
-      {
-        content: '<div>스타벅스 경북대점<br> 할인혜택: 금액(400원) </div>',
-        latlng: new kakao.maps.LatLng(35.892293, 128.608578),
-      },
-      {
-        content: '<div>투썸 플레이스 경북대점<br> 할인혜택: 금액(300원) </div>',
-        latlng: new kakao.maps.LatLng(35.891871, 128.607719),
-      },
-      {
-        content: '<div>이디아 경북대점<br> 할인혜택: 금액(200원) </div>',
-        latlng: new kakao.maps.LatLng(35.892940, 128.608781)
-      },
-      {
-        content: '<div>할리스 경북대북문점<br> 할인혜택: 금액(300원) </div>',
-        latlng: new kakao.maps.LatLng(35.892717,128.608741)
-      },
-      {
-        content: '<div> 빽다방 경북대정문점<br> 할인혜택: 금액(300원) </div>',
-        latlng: new kakao.maps.LatLng(35.884519, 128.613896)
+    var franArr = new Array();
+    franArr[0] = ["스타북스 경북대점", 35.892293, 128.608578, "대구 북구 대학로 75", "1234123123"]
+    franArr[1] = ["투썸 경북대점", 35.891871, 128.607719, "대구 대구", "1234123123"]
+    franArr[2] = ["이디아 경북대점", 35.892940, 128.608781, "대구 대구", "1234123123"]
+
+    var persArr = new Array();
+    persArr[0] = ["더쪽 카페", 35.886194, 128.610286, "대구 북구 대현동 대현로19길 16", 12345134]
+
+    var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';
+        franchiseMarkers = [],
+        personalMarkers = [],
+        franchiseOverlay = [],
+        personalOverlay = [];
+
+    createFranMarkers();
+    createPersMarkers();
+
+    //changeMarker('franchise')
+
+    function createMarkerImage(src,size,options){
+      var markerImage = new kakao.maps.MarkerImage(src, size, options);
+      return markerImage;
+    }
+
+
+    // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
+    function createFranMarkers() {
+
+      for (var i = 0; i < franArr.length; i++) {
+
+        var imageSize = new kakao.maps.Size(22, 26),
+                imageOptions = {
+                  spriteOrigin: new kakao.maps.Point(10, 0),
+                  spriteSize: new kakao.maps.Size(36, 98)
+                };
+
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions);
+                // marker = createMarker(franchisePositions[i], markerImage);
+
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+        var markTmp;
+        var customOverlay;
+        var contentStr;
+
+        for(var i =0; i< franArr.length;i++){
+          markTmp = new daum.maps.Marker({
+            position: new daum.maps.LatLng(franArr[i][1],franArr[i][2]),
+            title: franArr[i][0],
+            image: markerImage,
+            map:map
+          });
+          contentStr = "<div class='customoverlay'><a href='https://map.kakao.com/link/map/"+ franArr[i][4] +"' target='_blank'><span class='title'>"+ franArr[i][0] +"</span></a></div>";
+
+          customOverlay = new kakao.maps.CustomOverlay({
+            map: map,
+            position: new daum.maps.LatLng(franArr[i][1],franArr[i][2]),
+            content: contentStr,
+            yAnchor: 1
+          });
+          franchiseMarkers.push(markTmp);
+          franchiseOverlay.push(customOverlay);
+        };
       }
-    ];
-
-    for (var i = 0; i < positions.length; i++) {
-      // 마커를 생성합니다
-      var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng // 마커의 위치
-      });
-
-      // 마커에 표시할 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
-        content: positions[i].content // 인포윈도우에 표시할 내용
-      });
-
-      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     }
 
-    function makeOverListener(map, marker, infowindow) {
-      return function () {
-        infowindow.open(map, marker);
-      };
+    // 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
+    function setFranMarkers(map) {
+      for (var i = 0; i < franchiseMarkers.length; i++) {
+        franchiseMarkers[i].setMap(map);
+        franchiseOverlay[i].setMap(map);
+      }
     }
 
-    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-    function makeOutListener(infowindow) {
-      return function () {
-        infowindow.close();
-      };
+
+    // 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
+    function changeMarker(type){
+
+      var franchise = document.getElementById('franchise');
+      var personal = document.getElementById('personal');
+
+      // 커피숍 카테고리가 클릭됐을 때
+      if (type === 'franchise') {
+
+        // 커피숍 카테고리를 선택된 스타일로 변경하고
+        franchise.className = 'menu_selected';
+
+        // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
+        personal.className = '';
+
+        // 커피숍 마커들만 지도에 표시하도록 설정합니다
+        setFranMarkers(map);
+        setPersMarkers(null);
+
+      } else if (type === 'personal') { // 편의점 카테고리가 클릭됐을 때
+
+        // 편의점 카테고리를 선택된 스타일로 변경하고
+        franchise.className = '';
+        personal.className = 'menu_selected';
+
+        // 편의점 마커들만 지도에 표시하도록 설정합니다
+        setFranMarkers(null);
+        setPersMarkers(map);
+
+      }
+    }
+
+    function setMapType(maptype) {
+      var roadmapControl = document.getElementById('btnRoadmap');
+      var skyviewControl = document.getElementById('btnSkyview');
+      if (maptype === 'roadmap') {
+        map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
+        roadmapControl.className = 'selected_btn';
+        skyviewControl.className = 'btn';
+      } else {
+        map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+        skyviewControl.className = 'selected_btn';
+        roadmapControl.className = 'btn';
+      }
     }
   </script>
 
