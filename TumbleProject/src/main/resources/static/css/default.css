@@ -10,8 +10,6 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    margin-left: 10px;
-    margin-right: 10px;
     border-bottom: 2px solid #5CC685;
 }
 
@@ -73,7 +71,7 @@ a:hover{
 }
 
 .main{
-    background-image: url("/css/main.png");
+    background-image: url("/static/images/main.png");
     background-repeat: no-repeat;
     background-size: cover;
     /* filter: grayscale(100%); */
