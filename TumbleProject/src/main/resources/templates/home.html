@@ -8,7 +8,6 @@
 <body>
 <div>
     <div th:replace="/fragments/header.html :: headerFragment"></div>
-    <img src="/images/main.png" class="main">
     <!-- top image -->
     <div class="main" style="margin-top:30px;height:700px;">
         <div class="slogan" style="text-align:center;">
@@ -39,12 +38,40 @@
             </div>
         </div>
     </div>
-    <hr>
+    <hr style="margin-top:30px; margin-bottom:40px;">
+    <div style="margin-top:30px; margin-bottom:40px;text-align:center;font-size:20px;">
+        하루에 발생하는 폐기물 약 53만톤,<br>이제는<span style="color:#5CC685;font-weight:bold;">   환경을 생각할 때</span>!
+    </div>
     <!-- introduce - cafe -->
-
+    <div class="sort-two">
+        <div style="text-align:center;width:50%;">
+            <div style="font-size:20px;margin-top:100px;">환경을 생각하는 카페를<br>보러가봐요!</div>
+            <button class="default-btn"><a class="a-hover-white" href="">카페보러가기</a></button>
+        </div>
+        <div>
+            <img class="intro-img-size" src="tumb.png">
+        </div>
+    </div>
     <!-- introduce - community -->
-
+    <div class="sort-two">
+        <div>
+            <img class="intro-img-size" src="commu.png">
+        </div>
+        <div style="text-align:center;width:50%;">
+            <div style="font-size:20px;margin-top:100px;">TUMBLE과 함께 환경을 위한<br>다양한 실천 방안과<br>후기를 공유해봐요!</div>
+            <button class="default-btn"><a class="a-hover-white" href="">소통하러가기</a></button>
+        </div>
+    </div>
     <!-- introduce - campaign -->
+    <div class="sort-two">
+        <div style="text-align:center;width:50%;">
+            <div style="font-size:20px;margin-top:100px;">더 많은 실천을 원하는 사람들을 위한<br>캠페인도 소개해드려요!</div>
+            <button class="default-btn"><a class="a-hover-white">캠페인보러가기</a></button>
+        </div>
+        <div>
+            <img class="intro-img-size" src="campa.png">
+        </div>
+    </div>
     <div th:replace="/fragments/footer.html :: footerFragment"></div>
 </div>
 </body>
