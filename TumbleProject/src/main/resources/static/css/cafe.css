@@ -1,7 +1,15 @@
 .imgview {
     width: 300px;
     height: 200px;
+    margin: 0 0 100px;
+    border-radius: 20%;
+}
+
+.eee{
+    width: 300px;
+    height: 200px;
     margin: 0 0 50px;
+    line-height: 0.8;
 }
 
 .cafe-box {
