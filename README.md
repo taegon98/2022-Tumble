@@ -1,5 +1,6 @@
 # 2022-hackathon
-팀명
+### * 팀명
+- 나띵벗(Nothing But)
 
 제출 세션 및 주제
 
