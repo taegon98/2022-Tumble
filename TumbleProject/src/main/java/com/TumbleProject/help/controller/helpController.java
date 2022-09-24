@@ -2,6 +2,9 @@ package com.TumbleProject.help.controller;
 
 import com.TumbleProject.help.entity.helpBoard;
 import com.TumbleProject.help.service.helpService;
+import com.TumbleProject.mypage.domain.Grade;
+import com.TumbleProject.mypage.domain.Member;
+import com.TumbleProject.mypage.domain.SessionConst;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +26,8 @@ public class helpController {
     private helpService helpService;
 
     @GetMapping("/help")
-    public String helpHome(Model model,@PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
+    public String helpHome(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,
+                           Model model, @PageableDefault(page =0,size=10,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
                            String searchKeyword)
     {
         Page<helpBoard> list=null;
@@ -44,7 +49,7 @@ public class helpController {
 
         model.addAttribute("board",list);
         model.addAttribute("localDateTime", LocalDateTime.now());
-
+        model.addAttribute("loginMember",loginMember);
         model.addAttribute("nowPage",nowPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
@@ -54,7 +59,8 @@ public class helpController {
     }
 
     @GetMapping("/help/enroll")
-    public String createForm(Model model) {
+    public String createForm(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember,Model model) {
+        model.addAttribute("loginMember",loginMember);
         return "helpHtml/helpEnroll";
     }
 
@@ -65,9 +71,22 @@ public class helpController {
     }
 
     @GetMapping("/help/view")
-    public String boardView(Model model,Integer id) {
+    public String boardView(@SessionAttribute(name= SessionConst.LOGIN_MEMBER, required = false) Member loginMember,Model model,Integer id) {
         model.addAttribute("board",helpService.boardView(id));
-        return "/helpHtml/helpView";
+        System.out.println("loginMember = " + loginMember.getGrade());
+        if(loginMember==null)
+        {
+            return "/helpHtml/helpNonView";
+        }
+        else{
+            if(loginMember.getGrade()==Grade.VIP)
+            {
+                return "/helpHtml/helpView";
+            }
+            else{
+                return "/helpHtml/helpNonView";
+            }
+        }
     }
 
     @GetMapping("/help/delete")
