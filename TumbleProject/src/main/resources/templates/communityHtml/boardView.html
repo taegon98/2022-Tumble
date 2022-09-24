@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>게시글 상세 페이지</title>
     <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+    <link th:href="@{/css/boardview.css}" href="../css/boardview.css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
-<h1 th:text="${board.title}"></h1>
-<p th:text="${board.content}"></p>
-<a th:href="@{/community/delete(id=${board.id})}">글삭제</a>
-<a th:href="@{/community/modify/{id}(id=${board.id})}">글수정</a>
-<a th:href="@{/community/(page=${currPage - 1})}">돌아가기</a>
-
+<h1 class="view-title" th:text="${board.title}"></h1>
+<span class="view-detail">작성자 <span th:text="${board.writer}"></span> | 작성일자 <span th:text="${board.writeDate}"></span> | 조회수 <span th:text="${board.countVisit}"></span></span>
+<hr style="width:90%;margin-top:20px;margin-bottom:20px;">
+<div class="view-content" th:text="${board.content}"></div>
+<div class="view-btn">
+    <button class="btn-view"><a class="a-hover" th:href="@{/community/(page=${currPage - 1})}">돌아가기</a></button>
+    <button class="btn-view"><a class="a-hover" th:href="@{/community/modify/{id}(id=${board.id})}">수정</a></button>
+    <button class="btn-view"><a class="a-hover" th:href="@{/community/delete(id=${board.id})}">삭제</a></button>
+</div>
 </body>
 </html>
