@@ -20,7 +20,7 @@
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 25px;
     float: left;
 }
 
@@ -58,4 +58,19 @@
     color: #969696;
     border-color: #d6d6d6;
     height: 30px;
+}
+
+.a-hover {
+    text-decoration: none;
+    color: black;
+}
+
+.paging-btn {
+    font-size: 13px;
+    margin-right: 10px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
 }

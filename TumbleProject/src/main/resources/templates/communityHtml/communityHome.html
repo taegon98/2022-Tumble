@@ -12,20 +12,20 @@
 <div class="go-center">
   <div style="width:80%;">
     <div class="community-container" th:each="board : ${board}">
-      <a th:href="@{/community/view(id=${board.id})}"><span class="community-title" th:text="${board.title}"></span></a>
-      <span class="community-extra">작성자 - <span th:text="${board.writer}"></span> | 작성일자 - <span th:text="${board.writeDate}"></span> | 조회수 - <span th:text="${board.countVisit}"></span></span>
+      <a class="a-hover" th:href="@{/community/view(id=${board.id})}"><span class="community-title" th:text="${board.title}"></span></a>
+      <span class="community-extra">작성자 <span th:text="${board.writer}"></span> | 작성일자 <span th:text="${board.writeDate}"></span> | 조회수 <span th:text="${board.countVisit}"></span></span>
     </div>
     <div>
       <!-- paging -->
-      <button type="submit"><a th:href="@{/community(page = ${prePage - 1})}"> < </a></button>
+      <button class="paging-btn" type="submit"><a class="a-hover" th:href="@{/community(page = ${prePage - 1})}"> 이전 </a></button>
       <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-        <a th:if="${page != nowPage}"
+        <a class="a-hover" th:if="${page != nowPage}"
            th:href=
                    "@{/community(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
            th:text="${page}"></a>
         <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
       </th:block>
-      <button type="submit"><a th:href="@{/community(page = ${nowPage})}"> > </a></button>
+      <button class="paging-btn" type="submit"><a class="a-hover" th:href="@{/community(page = ${nowPage})}"> 다음 </a></button>
       <!-- search -->
       <form style="margin-top:20px;">
         <input class="search-input" type="text" name="searchKeyword" placeholder="제목을 입력하세요">
@@ -33,7 +33,7 @@
       </form>
     </div>
     <div>
-      <button type="submit" class="gray-btn"><a href="/community/enroll">글 작성하기</a></button>
+      <button type="submit" class="gray-btn"><a class="a-hover" href="/community/enroll">글 작성하기</a></button>
     </div>
   </div>
 </div>
