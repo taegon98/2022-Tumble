@@ -4,63 +4,204 @@
     <meta charset="UTF-8">
     <title>Tumble</title>
     <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
+    <link th:href="@{/css/cafe.css}" href="../css/cafe.css" rel="stylesheet">
 </head>
 
 <body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
-<h1>카페소개</h1>
-
-<div class="layout">
-    <table>
-        <thead>
-        <tr>
-            <th>글번호</th>
-            <th>카페이름</th>
-            <th>주소</th>
-            <th>번호</th>
-            <th>할인혜택</th>
-            <th>영업시간</th>
-            <th>소개글</th>
-            <th>작성날짜
-            <th>수정</th>
-            <th>삭제</th>
-
-        </tr>
-        </thead>
-        <tbody>
-
-
-        <tr th:each="cafe : ${cafes}">
-            <td th:text="${cafe.id}"></td>
-            <td th:text="${cafe.name}"></td>
-            <td th:text="${cafe.address}"></td>
-            <td th:text="${cafe.phoneNum}"></td>
-            <td th:text="${cafe.discount}"></td>
-            <td th:text="${cafe.hour}"></td>
-            <td th:text="${cafe.introduce}"></td>
-            <td th:text="${cafe.hour}"></td>
-
-            <td>
-                <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
-                    <button>수정</button>
-                </form>
-            </td>
-            <td>
-                <form th:action="@{/cafe/delete}">
-                    <button>삭제</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<h1 class="title">Cafe</h1>
+<div class="cafe-btns" style="float:right; clear:left;">
+    <div>
+        <input class="search-input" placeholder="카페 이름을 검색하세요">
+        <button class="search-btn">검색</button>
+    </div>
+    <div>
+        <button class="cafe-btn"><a style="text-decoration: none;color: black;" href="/cafe/cafeMap">지도보기</a></button>
+        <button class="cafe-btn">카페등록하기</button>
+    </div>
 </div>
-
-<tr th:each="files : ${file}">
-    <img th:src="@{/img/}+${files.filename}">
-</tr>
-    <a href="/cafe/cafeMap">지도 보기</a>
-    <a href="/cafe/enroll">게시글 작성</a>
-<a href="/">돌아가기</a>
+<div class="go-center">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="/images/logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+    <div class="cafe-box" style="width:80%;">
+        <div>
+            <img class="imgview" src="logo.jpg">
+        </div>
+        <div style="margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title">해비치커피</div>
+            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
+            <div class="cafe-detail">번호 : 1213232313</div>
+            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
+            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
+            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
+        </div>
+    </div>
+    <div>
+        <button class="modify-btn">수정하기</button>
+    </div>
+    <br>
+    <hr style="margin-left:100px;width:90%;">
+</div>
 </body>
 </html>
 
