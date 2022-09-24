@@ -79,10 +79,12 @@ public class CommunityController {
     @PostMapping("/community/write")
     public String boardWrite(@SessionAttribute(name=SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Board board, Model model)
     {
+        model.addAttribute("message","글 작성이 완료되었습니다.");
+        model.addAttribute("searchUrl","/community");
         board.setWriter(loginMember.getUserId());
         communityService.write(board);
         System.out.println("loginMember = " + loginMember);
-        return "redirect:/community";
+        return "message";
     }
 
     @GetMapping("/community/view")
@@ -114,10 +116,11 @@ public class CommunityController {
     }
 
     @GetMapping("/community/delete")
-    public String boardDelete(Integer id) {
+    public String boardDelete(Integer id, Model model) {
         communityService.boardDelete(id);
-
-        return "redirect:/community/";
+        model.addAttribute("message","글이 삭제되었습니다.");
+        model.addAttribute("searchUrl","/community");
+        return "message";
     }
 
     @GetMapping("/community/modify/{id}")

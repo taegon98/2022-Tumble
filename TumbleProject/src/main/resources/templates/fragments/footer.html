@@ -9,11 +9,13 @@
     <footer th:fragment="footerFragment" class="page-footer font-small teal pt-4">
         <div class="container-fluid text-center text-md-left">
             <div class="row">
-                <h3>FAQ</h3>
                <form th:action="@{/letter}" method="get">
                    <input type="text">
                    <button type="submit">트렌트 레터 구독</button>
                </form>
+                    <span>FAQ</span>
+                    <span>Contact Us</span>
+                    <span>About Tumble</span>
             </div>
         </div>
     </footer>
