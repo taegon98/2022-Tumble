@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:height="http://www.w3.org/1999/xhtml" xmlns:red
+      xmlns:float="http://www.w3.org/1999/xhtml" xmlns:border="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Tumble</title>
@@ -20,73 +21,54 @@
         <button class="cafe-btn"><a href="/cafe/enroll">카페등록하기</a></button>
     </div>
 </div>
-<div class="flex-display">
-    <div class="db-img" style="width:100%">
-        <img class="imgview" src="#">
-    </div>
+
+<div style="width: 15%; height:150px;border:5px solid white; float: left;">
+    <tr th:each = "files:${file}">
+    <img class="imgview" th:src="@{/img/}+${files.filename}"
+    </tr>
 </div>
-<div style="margin-top:100px" th:each="cafe : ${cafes}">
-    <div class="db-detail" style="width:90%;margin-left:25px; margin-bottom:0;">
-        <div class="cafe-title" th:text="${cafe.name}"></div>
-        <div class="cafe-detail" th:text="${cafe.address}"></div>
-        <div class="cafe-detail" th:text="${cafe.phoneNum}"></div>
-        <div class="cafe-detail" th:text="${cafe.hour}"></div>
-        <div class="cafe-detail" th:text="${cafe.discount}"></div>
-        <div class="cafe-detail" th:text="${cafe.introduce}"></div>
+
+<!--<div class="side" style="width:100%" th:each="files : ${file}">-->
+<!--        <img class="imgview" th:src="@{/img/}+${files.filename}">-->
+<!--</div>-->
+
+<!--<div style="margin-top:100px" th:each="files : ${file}">-->
+<!--    <div class="side" style="width:100%">-->
+<!--        <img class="imgview" th:src="{/img/}+{files.filename}">-->
+<!--    </div>-->
+<!--</div>-->
+
+<div style="width:60%; height:150px; margin-bottom:50px; border:10px solid white; float:right;">
+    <tr th:each="cafe : ${cafes}">
+    <div style="width:65%;">
+        <div th:text="${cafe.name}"></div>
+        <div th:text="${cafe.address}"></div>
+        <div th:text="${cafe.phoneNum}"></div>
+        <div th:text="${cafe.hour}"></div>
+        <div th:text="${cafe.discount}"></div>
+        <div style="margin-bottom:20px"th:text="${cafe.introduce}"></div>
     </div>
-    <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
+    <form style="margin-bottom:50px" th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
         <button class="modify-btn">수정</button>
     </form>
+    </tr>
 </div>
 
-<h1>카페소개</h1>
-
-<div class="layout">
-    <table>
-        <thead>
-        <tr>
-            <th>글번호</th>
-            <th>카페이름</th>
-            <th>주소</th>
-            <th>번호</th>
-            <th>할인혜택</th>
-            <th>영업시간</th>
-            <th>소개글</th>
-            <th>작성날짜
-            <th>수정</th>
-            <th>삭제</th>
-
-        </tr>
-        </thead>
-        <tbody>
+<!--<div style="margin-top:100px" th:each="cafe : ${cafes}">-->
+<!--    <div class="content" style="width:90%;margin-left:25px; margin-bottom:0;">-->
+<!--        <div th:text="${cafe.name}"></div>-->
+<!--        <div th:text="${cafe.address}"></div>-->
+<!--        <div th:text="${cafe.phoneNum}"></div>-->
+<!--        <div th:text="${cafe.hour}"></div>-->
+<!--        <div th:text="${cafe.discount}"></div>-->
+<!--        <div th:text="${cafe.introduce}"></div>-->
+<!--    </div>-->
+<!--    <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">-->
+<!--        <button class="modify-btn">수정</button>-->
+<!--    </form>-->
+<!--</div>-->
 
 
-        <tr th:each="cafe : ${cafes}">
-            <td th:text="${cafe.id}"></td>
-            <td th:text="${cafe.name}"></td>
-            <td th:text="${cafe.address}"></td>
-            <td th:text="${cafe.phoneNum}"></td>
-            <td th:text="${cafe.discount}"></td>
-            <td th:text="${cafe.hour}"></td>
-            <td th:text="${cafe.introduce}"></td>
-            <td th:text="${cafe.hour}"></td>
-
-            <td>
-                <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
-                    <button>수정</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<tr th:each="files : ${file}">
-    <img th:src="@{/img/}+${files.filename}">
-</tr>
-    <a href="/cafe/cafeMap">지도 보기</a>
-    <a href="/cafe/enroll">게시글 작성</a>
-<a href="/">돌아가기</a>
 </body>
 </html>
 

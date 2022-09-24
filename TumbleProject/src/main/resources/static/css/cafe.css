@@ -1,6 +1,7 @@
 .imgview {
     width: 300px;
     height: 200px;
+    margin: 0 0 50px;
 }
 
 .cafe-box {
@@ -38,6 +39,14 @@
 .cafe-detail {
     margin-bottom: 10px;
 }
+.div1 {
+    width: 50px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid;
+    background: pink;
+    float: left
+}
 
 .search-input {
     border-radius: 5px;
@@ -71,4 +80,20 @@
     margin-right: 0px;
     min-width: 400px;
     margin-left: 20px;
+}
+
+.side{
+    float: left;
+    width: 20%;
+    padding:10px;
+    border: 2px solid;
+    background: pink;
+}
+
+.content{
+    float: right;
+    width: 65%;
+    margin: 0 0 10px;
+    padding: 10px;
+    border: 2px solid;
 }
