@@ -11,13 +11,14 @@
 <div class="go-center">
     <form action="" th:action th:object="${member}" method="post" class="signup-container">
         <div class="font-signup">계정이 이미 있는 경우에는
-            <a class="footer-a" href="./login.html">로그인</a>을 해주세요.<p></p>
+            <a class="footer-a" th:href="@{/login}">로그인</a>을 해주세요.<p></p>
             가입을 하면 텀블의 <a class="footer-a" href="#">이용약관</a>, <a class="footer-a" href="#">개인정보취급방침 및 <br>
                 개인정보3자제공</a>에 동의하게 됩니다.
             <p></p>가입 후 아이디는 변경할 수 없습니다.<br>
         </div>
         <div style="margin-top:30px;" class="signup-name">아이디</div>
         <input type="text" id="userId" th:field="*{userId}" required>
+        <div th:errors="*{userId}" />
         <div class="signup-name">비밀번호</div>
         <input type="text" id="password" th:field="*{password}" required>
         <div class="signup-name">이름</div>

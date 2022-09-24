@@ -17,7 +17,7 @@
                 <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
             </div>
             <input type="text" placeholder="아이디" th:field="*{userId}" name="username" required>
-            <input type="text" placeholder="비밀번호" th:field="*{password}" name="password" required>
+            <input type="password" placeholder="비밀번호" th:field="*{password}" name="password" required>
             <div class="font-h4">* 계정이 없는 경우에는
                 <a class="footer-a" th:href="@{/signup}">회원가입</a>을 해주세요.
             </div>
