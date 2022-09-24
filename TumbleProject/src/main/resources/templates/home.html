@@ -8,7 +8,42 @@
 <body>
 <div>
     <div th:replace="/fragments/header.html :: headerFragment"></div>
-    <img src="images/natural.jfif" alt="이미지없음">
+    <!-- top image -->
+    <div class="main" style="margin-top:30px;height:700px;">
+        <div class="slogan" style="text-align:center;">
+            <div style="margin-top:100px;"><h1 class="main-slogan"></h1>
+                <br><a class="a-hover-white"><h3 style="margin-top:300px;">더 알아보기</h3></a>
+            </div>
+        </div>
+    </div>
+    <!-- intro -->
+    <hr>
+    <div style="text-align:center;">
+        <h2 class="introd">Introduction</h2>
+        <div class="align">
+            <div>
+                <img class="img-size" src="./cafe.png">
+                <div style="font-weight:bold;font-size:20px;">카페소개</div>
+                <div>텀블러를 이용하면 혜택을 주는 카페를 소개해 드릴게요.</div>
+            </div>
+            <div>
+                <img class="img-size" src="./comm.png">
+                <div style="font-weight:bold;font-size:20px;">커뮤니티</div>
+                <div>커뮤니티에서 다양한 의견을 공유하세요.</div>
+            </div>
+            <div>
+                <img class="img-size" src="./camp.png">
+                <div style="font-weight:bold; font-size:20px;">캠페인</div>
+                <div>다양한 에코 캠페인을 소개해드릴게요.</div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- introduce - cafe -->
+
+    <!-- introduce - community -->
+
+    <!-- introduce - campaign -->
     <div th:replace="/fragments/footer.html :: footerFragment"></div>
 </div>
 </body>
