@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- footer -->
-<footer style="height:200px;background-color:#f5f5f5;color:rgb(2, 75, 2); left:0px;right:0px;bottom:0px;text-align:center;">
+<footer th:fragment="footerFragment" style="height:200px;background-color:#f5f5f5;color:rgb(2, 75, 2); left:0px;right:0px;bottom:0px;text-align:center;">
     <div>
         <form style="margin-bottom:20px;margin-top:20px;" th:action="@{/letter}" method="get">
             <input class="trand-input"style="margin-top:20px;"type="text" placeholder="put your email">
