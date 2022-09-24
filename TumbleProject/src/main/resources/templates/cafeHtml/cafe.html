@@ -16,27 +16,27 @@
         <button class="search-btn">검색</button>
     </div>
     <div>
-        <button class="cafe-btn">지도보기</button>
-        <button class="cafe-btn">카페등록하기</button>
+        <button class="cafe-btn"><a href="/cafe/cafeMap">지도보기</a></button>
+        <button class="cafe-btn"><a href="/cafe/enroll">카페등록하기</a></button>
     </div>
 </div>
-<div class="go-center">
-    <div class="cafe-box" style="width:80%;">
-        <div>
-            <img class="imgview" src="/images/logo.jpg">
-        </div>
-        <div style="margin-left:25px; margin-bottom:0;">
-            <div class="cafe-title">해비치커피</div>
-            <div class="cafe-detail">주소 : 대구 광역시 수성구 노변로11</div>
-            <div class="cafe-detail">번호 : 1213232313</div>
-            <div class="cafe-detail">영업시간 : 월 8시~22시 월 8시~22시 월 8시~22시 월 8시~22시</div>
-            <div class="cafe-detail">할인혜택 : sljsdfksjflsk</div>
-            <div class="cafe-detail">소개란 : 아메리카노가 맛잇어요~</div>
-        </div>
+<div class="flex-display">
+    <div class="db-img" style="width:100%">
+        <img class="imgview" src="#">
     </div>
-    <div>
-        <button class="modify-btn">수정하기</button>
+</div>
+<div style="margin-top:100px" th:each="cafe : ${cafes}">
+    <div class="db-detail" style="width:90%;margin-left:25px; margin-bottom:0;">
+        <div class="cafe-title" th:text="${cafe.name}"></div>
+        <div class="cafe-detail" th:text="${cafe.address}"></div>
+        <div class="cafe-detail" th:text="${cafe.phoneNum}"></div>
+        <div class="cafe-detail" th:text="${cafe.hour}"></div>
+        <div class="cafe-detail" th:text="${cafe.discount}"></div>
+        <div class="cafe-detail" th:text="${cafe.introduce}"></div>
     </div>
+    <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
+        <button class="modify-btn">수정</button>
+    </form>
 </div>
 
 <h1>카페소개</h1>

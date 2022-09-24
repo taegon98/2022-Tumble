@@ -64,3 +64,11 @@
     margin-top: 10px;
     width: 100px;
 }
+
+.flex-display {
+    float: left;
+    clear: right;
+    margin-right: 0px;
+    min-width: 400px;
+    margin-left: 20px;
+}
