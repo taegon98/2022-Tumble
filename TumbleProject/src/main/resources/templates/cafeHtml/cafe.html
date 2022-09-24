@@ -1,47 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:red
+>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Tumble</title>
-    <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
-    <link th:href="@{/css/cafe.css}" href="../css/cafe.css" rel="stylesheet">
+    <link
+            th:href="@{/css/default.css}"
+            href="../css/default.css"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/cafe.css}" href="../css/cafe.css" rel="stylesheet" />
 </head>
 
-<body >
+<body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
 <h1 class="title">카페</h1>
-<div class="cafe-btns" style="float:right; clear:left;">
+<div class="cafe-btns" style="float: right; clear: left">
     <div>
-        <input class="search-input" placeholder="카페 이름을 검색하세요">
+        <input class="search-input" placeholder="카페 이름을 검색하세요" />
         <button class="search-btn">검색</button>
     </div>
     <div>
         <button class="cafe-btn"><a href="/cafe/cafeMap">지도보기</a></button>
-        <button class="cafe-btn"><a href="/cafe/enroll">카페등록하기</a></button>
+        <button class="cafe-btn">
+            <a href="/cafe/enroll">카페등록하기</a>
+        </button>
     </div>
-</div>
-<div class="flex-display">
-    <div class="db-img" style="width:100%">
-        <tr th:each="files : ${file}">
-            <img class="imgview" th:src="@{/img/}+${files.filename}">
-        </tr>
-    </div>
-</div>
-<div style="margin-top:100px" th:each="cafe : ${cafes}">
-    <div class="db-detail" style="width:90%;margin-left:25px; margin-bottom:0;">
-        <div class="cafe-title" th:text="${cafe.name}"></div>
-        <div class="cafe-detail" th:text="${cafe.address}"></div>
-        <div class="cafe-detail" th:text="${cafe.phoneNum}"></div>
-        <div class="cafe-detail" th:text="${cafe.hour}"></div>
-        <div class="cafe-detail" th:text="${cafe.discount}"></div>
-        <div class="cafe-detail" th:text="${cafe.introduce}"></div>
-    </div>
-    <form th:action="@{/cafe/modify/{id}(id=${cafe.id})}">
-        <button class="modify-btn">수정</button>
-    </form>
 </div>
 
-<div th:replace="/fragments/footer.html :: footerFragment"></div>
+<div
+        style="width: 15%; height: 150px; border: 5px solid white; float: left"
+>
+    <tr th:each="files:${file}">
+        <img class="imgview" th:src="@{/img/}+${files.filename}"
+    </tr>
+</div>
+
+<div
+        style="
+        width: 60%;
+        height: 200px;
+        border: 5px solid white;
+        margin-top: 10px;
+        float: right;
+      "
+>
+    <tr th:each="cafe : ${cafes}">
+        <div class="db-detail" style="width:90%;margin-left:25px; margin-bottom:0;">
+            <div class="cafe-title" th:text="|카페명: ${cafe.name}|"></div>
+            <div class="cafe-detail" th:text="|주소: ${cafe.address}|"></div>
+            <div class="cafe-detail" th:text="|연락처: ${cafe.phoneNum}|"></div>
+            <div class="cafe-detail" th:text="|영업시간: ${cafe.hour}|"></div>
+            <div class="cafe-detail" th:text="|할인 혜택: ${cafe.discount}|"></div>
+            <div th:text="|소개글: ${cafe.introduce}|"></div>
+        </div>
+        <form
+                th:action="@{/cafe/modify/{id}(id=${cafe.id})}"
+        >
+            <button class="modify-btn">수정</button>
+        </form>
+        <div style="margin-bottom : 103.5px"></div>
+    </tr>
+</div>
+
 </body>
 </html>
 
