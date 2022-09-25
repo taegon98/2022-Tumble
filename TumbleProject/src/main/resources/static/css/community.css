@@ -73,3 +73,7 @@
     cursor:pointer;
     overflow: hidden;
 }
+
+.search {
+    display: inline-block;
+}
