@@ -33,7 +33,7 @@
            th:href=
                    "@{/community(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
            th:text="${page}"></a>
-        <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+        <strong th:if="${page == nowPage}" th:text="${page}" style="color : forestgreen"></strong>
       </th:block>
         <button class="paging-btn" type="submit"><a class="a-hover" th:href="@{/community(page = ${nowPage})}"> 다음 </a></button>
       </div>
