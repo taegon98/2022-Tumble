@@ -32,6 +32,7 @@
 
 ----------
 ### 프로젝트에 활용된 기술(3가지 이내)
+- IDE : Visual Studio Code, Intellij 
 - Front-End : JavaScript, Thymeleaf, Bootstrap
 - Back-End : Spring Boot, Jpa, MariaDB on Amazon RDS
 - ETC : Kakao 지도 Web API
