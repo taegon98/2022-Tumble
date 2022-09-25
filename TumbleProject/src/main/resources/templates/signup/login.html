@@ -5,11 +5,11 @@
     <link th:href="@{/css/user.css}" href="../css/user.css" rel="stylesheet">
     <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
 </head>
-<body class="sub">
+<body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
-<br><br>
+<div class="sub">
 <div class="go-center">
-    <div class="container">
+    <div class="container" style="margin-top: 30px">
         <h2>로그인</h2>
         <hr class="line">
         <form action="" th:action th:object="${member}" method="post">
@@ -24,6 +24,7 @@
             <button type="submit" class="user-btn">로그인</button>
         </form>
     </div>
+</div>
 </div>
 <div th:replace="/fragments/footer.html :: footerFragment"></div>
 </body>

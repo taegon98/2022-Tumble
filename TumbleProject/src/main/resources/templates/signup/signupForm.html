@@ -5,11 +5,11 @@
     <link th:href="@{/css/user.css}" href="../css/user.css" rel="stylesheet">
     <link th:href="@{/css/default.css}" href="../css/default.css" rel="stylesheet">
 </head>
-<body class="sub">
+<body>
 <div th:replace="/fragments/header.html :: headerFragment"></div>
-<br><br>
+<div class="sub">
 <div class="go-center">
-    <form action="" th:action th:object="${member}" method="post" class="signup-container">
+    <form action="" th:action th:object="${member}" method="post" class="signup-container" style="margin-top: 30px">
         <div class="font-signup">계정이 이미 있는 경우에는
             <a class="footer-a" th:href="@{/login}">로그인</a>을 해주세요.<p></p>
             가입을 하면 텀블의 <a class="footer-a" href="#">이용약관</a>, <a class="footer-a" href="#">개인정보취급방침 및 <br>
@@ -29,6 +29,7 @@
         <input type="text" id="number" th:field="*{number}" required>
         <button type="submit" class="user-btn">회원가입</button>
     </form>
+</div>
 </div>
 <div th:replace="/fragments/footer :: footerFragment"></div>
 </body>
