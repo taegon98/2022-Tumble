@@ -23,17 +23,19 @@
   <div style="width:80%;">
 
     <!-- search -->
-    <form style="margin-top:20px;">
-      <input class="search-input" type="text" name="searchKeyword" placeholder="제목을 입력하세요">
-      <button class="search-btn" type="submit">검색</button>
-    </form>
-
-    <div class="community-container" th:each="board : ${board}">
-      <a class="a-hover"th:href="@{/help/view(id=${board.id})}"><span class="help-title" th:text="${board.title}"></span></a>
-      <span class="help-extra">작성일자 - <span th:text="${board.writeDate}"></span></span>
+    <div style="text-align: center">
+      <form style="margin-top:20px;">
+        <input class="search-input" type="text" name="searchKeyword" placeholder="제목을 입력하세요">
+        <button class="search-btn" type="submit">검색</button>
+      </form>
     </div>
 
-    <div>
+    <div class="community-container" th:each="board : ${board}">
+      <a class="a-hover"th:href="@{/help/view(id=${board.id})}"><span class="community-title" th:text="${board.title}"></span></a>
+      <span class="community-extra">작성일자 - <span th:text="${board.writeDate}"></span></span>
+    </div>
+
+    <div style="text-align: center">
       <!-- paging -->
       <button class="paging-btn" type="submit"><a class="a-hover"th:href="@{/help(page = ${prePage - 1})}"> < </a></button>
       <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
@@ -41,7 +43,7 @@
            th:href=
                    "@{/help(page=${page - 1}, searchKeyword=${param.searchKeyword})}"
            th:text="${page}"></a>
-        <strong th:if="${page == nowPage}" th:text="${page}" style="color : red"></strong>
+        <strong th:if="${page == nowPage}" th:text="${page}" style="color : forestgreen"></strong>
       </th:block>
       <button class="paging-btn" type="submit"><a class="a-hover"th:href="@{/help(page = ${nowPage})}"> > </a></button>
     </div>
