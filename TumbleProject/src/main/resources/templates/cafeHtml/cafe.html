@@ -42,22 +42,23 @@
 </div>
 
 <div
-        style="width: 15%; height: 150px; border: 5px solid white; float: left; margin-left: 60px"
+        style="width:250px; height:150px; border: 5px solid white; float: left; margin-left: 180px"
 >
     <tr th:each="files:${file}">
-        <img class="imgview" th:src="@{/img/}+${files.filename}"
+        <img class="imgview" th:src="@{/img/}+${files.filename}" style="width:300px; height:172px;">
     </tr>
 </div>
 
 <div
         style="
-        width: 60%;
-        height: 200px;
+        width: 50%;
+        height: 80px;
         margin-top: 10px;
         float: right;
         margin-left: 12px;
       "
 >
+
     <tr th:each="cafe : ${cafes}">
         <div class="db-detail" style="width:90%;margin-left:25px; margin-bottom:0;">
             <div class="cafe-title" th:text="|카페명: ${cafe.name}|"></div>
@@ -66,12 +67,11 @@
             <div class="cafe-detail" th:text="|영업시간: ${cafe.hour}|"></div>
             <div class="cafe-detail" th:text="|할인 혜택: ${cafe.discount}|"></div>
             <div th:text="|소개글: ${cafe.introduce}|"></div>
+            <form th:action="@{/cafe/modify/{id}(id=${cafe.id})} ">
+                <button class ="modify-btn" style="float:left">수정</button>
+            </form>
         </div>
-        <form
-                th:action="@{/cafe/modify/{id}(id=${cafe.id})}"
-        >
-            <button class="modify-btn">수정</button>
-        </form>
+
         <div style="margin-bottom : 103.5px"></div>
     </tr>
 </div>
