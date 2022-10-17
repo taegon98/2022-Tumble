@@ -1,6 +1,7 @@
 # 2022-hackathon
 ### 팀명
 - 나띵벗(Nothing But)
+- ![KakaoTalk_Photo_2022-09-26-15-14-44](https://user-images.githubusercontent.com/101933437/192205790-cbb81183-7d12-454f-822f-5df8839d7780.png)
 ----------
 
 ### 제출 세션 및 주제
